@@ -1,0 +1,2 @@
+GOOGLE_APPLICATION_CREDENTIALS_B64: "${google_credentials_b64}"
+BASE_URL: "https://best-assets-gradio-${gcp_project}.run.app"

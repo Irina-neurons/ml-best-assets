@@ -1,0 +1,6 @@
+gradio
+python-dotenv
+tqdm
+pandas
+google-cloud-storage
+numpy

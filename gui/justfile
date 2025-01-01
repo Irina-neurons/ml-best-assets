@@ -1,0 +1,47 @@
+set dotenv-load := true
+
+# Project and region configuration
+gcp_project := "neurons-development"
+gcp_region := "us-central1"
+
+# Docker image configuration
+revision := `git rev-parse --short HEAD`
+local_image_name := "best_assets_gradio"
+local_image := local_image_name + ":" + revision
+remote_image_name := gcp_region + "-docker.pkg.dev" / gcp_project / "best_assets/best_assets_gradio"
+remote_image := remote_image_name + ":" + revision
+
+# Deployment paths
+deploy_dir := ".deploy"
+deploy_env_vars_template := deploy_dir / "env_vars.yaml.template"
+deploy_env_vars_file := deploy_dir / "env_vars.yaml"
+
+# Default task: list all tasks
+[private]
+default:
+  @just --list
+
+# Run the app locally
+run *args:
+  python main.py {{ args }}
+
+# Deploy the current working tree to Cloud Run
+[confirm]
+[doc("Deploy the current working tree to Cloud Run")]
+deploy: make-env-vars-file
+  docker image build --platform 'linux/amd64' --tag '{{ local_image }}' .
+  docker image tag '{{ local_image }}' '{{ remote_image }}'
+  docker image push '{{ remote_image }}'
+
+  gcloud run deploy best-assets-gradio \
+    --project='{{ gcp_project }}' \
+    --region='{{ gcp_region }}' \
+    --image='{{ remote_image }}' \
+    --env-vars-file='{{ deploy_env_vars_file }}' \
+    --allow-unauthenticated
+
+# Create the environment variable file used for deployment
+[private]
+[doc("Create the environment variable file used for deployment")]
+make-env-vars-file:
+  envsubst < '{{ deploy_env_vars_template }}' > {{ deploy_env_vars_file }}
