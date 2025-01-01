@@ -1,3 +1,5 @@
 .venv
 /.env
 credentials.b64
+/__pycache__
+.DS_Store
