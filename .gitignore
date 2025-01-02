@@ -1,5 +1,10 @@
 .venv
-/.env
+gui/.env
 credentials.b64
-/__pycache__
+*/__pycache__
 .DS_Store
+
+# Exclude Python bytecode
+__pycache__/
+*.pyc
+*.pyo
