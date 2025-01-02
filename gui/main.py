@@ -8,7 +8,6 @@ from config import FILTERS_IMAGE, NO_ASSET_IMAGE
 from dotenv import load_dotenv
 load_dotenv()
 GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:7860")
 
 ############################################################################
 # Gradio App Layout
@@ -21,6 +20,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar') as interfa
             value=None,
             label="Select Asset Type"
         )
+        
 
     # Second Row: Dropdowns (initially hidden until asset type is selected)
     with gr.Row(visible=False) as dropdown_section:
@@ -46,7 +46,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar') as interfa
     # Define the main output layout with rows for images and metrics
     with gr.Column(visible=False) as output_section:
         output_rows = []
-        for _ in range(5): 
+        for _ in range(10): 
             with gr.Row():
                 with gr.Column(scale=20):
                     output_rows.append(gr.Image(label="Image", interactive=False, visible=False))
@@ -58,6 +58,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar') as interfa
                             output_rows.append(gr.HTML(label="Rank", value="<p>Rank will appear here</p>"))
                         with gr.Column(scale=3):
                             output_rows.append(gr.HTML(label="Metric", value="<p>Metrics will appear here</p>"))
+    
     
 
     # Radio Button Click Event
@@ -167,7 +168,9 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar') as interfa
         outputs=[placeholder_asset, no_asset_asset, output_section] + output_rows
     )
 
-# Launch the app
+############################################################################
+# Register cleanup function
 atexit.register(cleanup_temp_dir)
 
-interface.launch(share=True)
+# Launch the app
+interface.launch(server_name="0.0.0.0", server_port=int(os.getenv("PORT", 8080)))

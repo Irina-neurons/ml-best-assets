@@ -1,2 +1,3 @@
-GOOGLE_APPLICATION_CREDENTIALS_B64: "${google_credentials_b64}"
-BASE_URL: "https://best-assets-gradio-${gcp_project}.run.app"
+GOOGLE_CLOUD_PROJECT: "{{ gcp_project }}"
+SERVICE_ACCOUNT: "{{ service_account }}"
+BASE_URL: "https://object-detection-gradio-{{ gcp_region }}.run.app"

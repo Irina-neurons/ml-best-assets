@@ -90,26 +90,26 @@ def gcs_to_file(gcs_path: str, file_path: str) -> bool:
 
 def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Retrieve the benchmark and dataframes for the given asset type.
+    Retrieve the benchmark and dataframes for the given asset type directly from GCS.
     """
     if asset_type == "Image":
-        gcs_to_file(BENCHMARK_PATH_IMAGE, LOCAL_BENCHMARK_FILE)
-        gcs_to_file(DF_PATH_IMAGE, LOCAL_DF_FILE)
-        metrics_data = pd.read_csv(LOCAL_DF_FILE)
+        metrics_data = pd.read_csv(DF_PATH_IMAGE)
         metrics_data = metrics_data[metrics_data['metric'].isin(['cognitive_demand', 'focus_total', 'clarity', 'engagement', 'memory', 'engagement_frt'])].copy()
         metrics_data['metric'] = metrics_data['metric'].str.replace('_total', '')
-        benchmark_data = pd.read_csv(LOCAL_BENCHMARK_FILE)
+
+        benchmark_data = pd.read_csv(BENCHMARK_PATH_IMAGE)
         benchmark_data = benchmark_data[benchmark_data['time'].isin(['total'])].copy()
 
     else:
-        gcs_to_file(BENCHMARK_PATH_VIDEO, LOCAL_BENCHMARK_FILE)
-        gcs_to_file(DF_PATH_VIDEO, LOCAL_DF_FILE)
-        metrics_data = pd.read_csv(LOCAL_DF_FILE)
+        metrics_data = pd.read_csv(DF_PATH_VIDEO)
         metrics_data = metrics_data[metrics_data['metric'].isin(['cognitive_demand_total', 'focus_total', 'engagement_frt_total', 'memory_total'])].copy()
         metrics_data['metric'] = metrics_data['metric'].str.replace('_total', '')
-        benchmark_data = pd.read_csv(LOCAL_BENCHMARK_FILE)
+
+        benchmark_data = pd.read_csv(BENCHMARK_PATH_VIDEO)
         benchmark_data = benchmark_data[benchmark_data['time'].isin(['total'])].copy()
+
     return benchmark_data, metrics_data
+
 
 # GET Dropdown Options
 def get_dropdown_options(df):
@@ -223,7 +223,7 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     
     top_df = filtered_df[['asset_id', 'rank', 'which_metric', 'path_bucket']].drop_duplicates().copy()
     top_df = top_df.sort_values(by='rank', ascending=False).reset_index(drop=True)
-    return top_df.head()
+    return top_df.head(10)
 
 
 def run_selection(v1, v2, v3, v4, v5, v6, df_benchmark, df, asset_type):
