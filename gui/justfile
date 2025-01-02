@@ -1,18 +1,18 @@
 set dotenv-load := true
 
 # Project and region configuration
-gcp_project := "neurons-ml"
+gcp_project := "neurons-development"
 gcp_region := "us-central1"
 
 # Docker image configuration
 revision := `git rev-parse --short HEAD`
-local_image_name := "object_detection_gradio"
+local_image_name := "best_assets_gradio"
 local_image := local_image_name + ":" + revision
-remote_image_name := gcp_region + "-docker.pkg.dev" / gcp_project / "vertex/object_detection"
+remote_image_name := gcp_region + "-docker.pkg.dev" / gcp_project / "best-assets/best-assets-gradio"
 remote_image := remote_image_name + ":" + revision
 
-# Service account email
-service_account := "vertex-ai@neurons-ml.iam.gserviceaccount.com"
+# Build-time argument for base64 credentials
+google_credentials_b64 := "$GOOGLE_APPLICATION_CREDENTIALS_B64"
 
 # Deployment paths
 deploy_dir := ".deploy"
@@ -32,36 +32,24 @@ run *args:
 [confirm]
 [doc("Build Docker image")]
 build:
-  gcloud auth configure-docker '{{ gcp_region }}-docker.pkg.dev'
-  docker build --platform 'linux/amd64' --tag '{{ local_image }}' .
+  docker build --build-arg GOOGLE_APPLICATION_CREDENTIALS_B64="{{ google_credentials_b64 }}" --platform 'linux/amd64' --tag '{{ local_image }}' .
 
-# Push Docker image to Artifact Registry
+# Deploy the current working tree to Cloud Run
 [confirm]
-[doc("Push Docker image to Artifact Registry")]
-push: build
+[doc("Deploy the current working tree to Cloud Run")]
+deploy: make-env-vars-file build
   docker image tag '{{ local_image }}' '{{ remote_image }}'
   docker image push '{{ remote_image }}'
 
-# Deploy to Cloud Run with a service account
-[confirm]
-[doc("Deploy the current working tree to Cloud Run")]
-deploy: make-env-vars-file push
-  gcloud run deploy object-detection-gradio \
+  gcloud run deploy best-assets-gradio \
     --project='{{ gcp_project }}' \
     --region='{{ gcp_region }}' \
     --image='{{ remote_image }}' \
     --env-vars-file='{{ deploy_env_vars_file }}' \
-    --allow-unauthenticated \
-    --service-account='{{ service_account }}'
+    --allow-unauthenticated
 
 # Create the environment variable file used for deployment
 [private]
 [doc("Create the environment variable file used for deployment")]
 make-env-vars-file:
   envsubst < '{{ deploy_env_vars_template }}' > {{ deploy_env_vars_file }}
-
-# Clean Docker artifacts and cache
-[confirm]
-[doc("Clean up Docker cache and images")]
-clean:
-  docker system prune -f

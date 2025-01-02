@@ -1,3 +1,2 @@
 GOOGLE_CLOUD_PROJECT: "{{ gcp_project }}"
-SERVICE_ACCOUNT: "{{ service_account }}"
 BASE_URL: "https://object-detection-gradio-{{ gcp_region }}.run.app"

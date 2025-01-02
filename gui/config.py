@@ -1,7 +1,18 @@
 from google.cloud import storage
 import os
-import base64
+from dotenv import load_dotenv
+load_dotenv()
 
+from google.auth import default
+
+# Load Application Default Credentials (ADC)
+credentials, project_id = default()
+
+# Initialize the Google Cloud Storage client with ADC
+GCS_CLIENT = storage.Client(credentials=credentials, project=project_id)
+
+# Initialize the Google Cloud Storage client with the credentials
+GCS_CLIENT = storage.Client(credentials=credentials)
 
 # Temporary file paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -24,14 +35,3 @@ DF_PATH_VIDEO = "gs://neurons-assets-db/csv-files/eng_mem_videos_total_metrics.c
 LOCAL_BENCHMARK_FILE = os.path.join(TEMP_DIR, "benchmark.csv")
 LOCAL_DF_FILE = os.path.join(TEMP_DIR, "metrics.csv")
 
-# Initialize the GCS client
-from google.oauth2.service_account import Credentials
-
-# Decode the credentials from an environment variable (if passed as a base64 string)
-if os.getenv("GOOGLE_APPLICATION_CREDENTIALS_B64"):
-    credentials_json = base64.b64decode(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_B64")).decode("utf-8")
-    credentials = Credentials.from_service_account_info(eval(credentials_json))
-    GCS_CLIENT = storage.Client(credentials=credentials)
-else:
-    # Use default credentials (e.g., when running locally with GOOGLE_APPLICATION_CREDENTIALS set)
-    GCS_CLIENT = storage.Client()

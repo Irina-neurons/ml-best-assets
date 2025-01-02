@@ -5,7 +5,7 @@ import pandas as pd
 from google.cloud import storage
 from typing import Tuple, List, Dict, Optional
 from utils import filter_condition, filter_condition_bm, get_rank_image, get_rank_video, gcs_to_file
-from config import TEMP_DIR, GCS_CLIENT, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BENCHMARK_PATH_VIDEO, DF_PATH_VIDEO, LOCAL_BENCHMARK_FILE, LOCAL_DF_FILE
+from config import TEMP_DIR, GCS_CLIENT, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BENCHMARK_PATH_VIDEO, DF_PATH_VIDEO
 
 os.makedirs(TEMP_DIR, exist_ok=True)
 
