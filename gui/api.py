@@ -161,6 +161,16 @@ def get_thresholds(filter_benchmark):
     return THRESHOLDS
 
 
+def calculate_distance_to_best(row, metrics, best_values):
+    distance = 0
+    for metric in metrics:
+        if metric in best_values:
+            best_value = best_values[metric]
+            if best_value is not None:
+                distance += abs(row[metric] - best_value)
+    return distance
+
+
 def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     # Define filters based on conditions
     filter_industry = [] if v1 == ['all'] else v1
@@ -198,6 +208,7 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     filtered_df = filtered_df[['asset_id','metric','value','path_bucket']].drop_duplicates().copy()
     filtered_df = filtered_df.pivot(index=['asset_id','path_bucket'], columns='metric', values='value').reset_index()
     
+    
     ranks = []
     which_metric = []
     for _, row in tqdm(filtered_df.iterrows(), total=filtered_df.shape[0]):
@@ -228,8 +239,20 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     filtered_df['rank'] = ranks
     filtered_df['which_metric'] = which_metric
     
-    top_df = filtered_df[['asset_id', 'rank', 'which_metric', 'path_bucket']].drop_duplicates().copy()
-    top_df = top_df.sort_values(by='rank', ascending=False).reset_index(drop=True)
+    best_values = {
+    "cognitive_demand": filtered_df["cognitive_demand"].median(),
+    "focus": filtered_df["focus"].max(),
+    "clarity": filtered_df["clarity"].max() if "clarity" in filtered_df.columns else None,
+    "memory": filtered_df["memory"].max(),
+    "engagement": filtered_df["engagement"].max() if "engagement" in filtered_df.columns else None,
+    "engagement_frt": filtered_df["engagement_frt"].max(),
+    }
+    filtered_df["distance_to_best"] = filtered_df.apply(
+    lambda row: calculate_distance_to_best(
+        row, metrics=["cognitive_demand", "focus", "clarity", "memory", "engagement", "engagement_frt"], best_values=best_values), axis=1)
+    
+    top_df = filtered_df[['asset_id', 'rank', 'which_metric', 'path_bucket', 'distance_to_best']].drop_duplicates().copy()
+    top_df = top_df.sort_values(by=["rank", "distance_to_best"], ascending=[False, True]).reset_index(drop=True)
     return top_df.head(10)
 
 
@@ -253,6 +276,7 @@ def run_selection(v1, v2, v3, v4, v5, v6, df_benchmark, df, asset_type):
         gcs_to_file(row['path_bucket'], row['local_path'])
 
     return filtered_df['local_path'].tolist(), filtered_df['which_metric'].tolist(), filtered_df['rank'].tolist()
+
 
 def cleanup_temp_dir():
     if os.path.exists(TEMP_DIR):
