@@ -5,7 +5,7 @@ import pandas as pd
 from google.cloud import storage
 from typing import Tuple, List, Dict, Optional
 from utils import filter_condition, filter_condition_bm, get_rank_image, get_rank_video, gcs_to_file
-from config import TEMP_DIR, GCS_CLIENT, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BENCHMARK_PATH_VIDEO, DF_PATH_VIDEO
+from config import TEMP_DIR, GCS_CLIENT, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BENCHMARK_PATH_VIDEO, DF_PATH_VIDEO, DROPDOWN_DICT
 
 os.makedirs(TEMP_DIR, exist_ok=True)
 
@@ -38,8 +38,7 @@ def update_asset_type(asset_type):
     else:
         benchmark_data, metrics_data = get_asset_data("Video")
 
-
-    dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6   = get_dropdown_options(benchmark_data)
+    dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6   = get_dropdown_options(asset_type)
 
     # Update dropdown choices and make sections visible
     return (
@@ -112,17 +111,27 @@ def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
 
 # GET Dropdown Options
-def get_dropdown_options(df):
+def get_dropdown_options(media_type):
     """
-    Get the dropdown options for the given dataframe.
-    """
-    dropdown_option1 = sorted(df['industry_category'].unique().tolist())
-    dropdown_option2 = sorted(df['industry_subcategory'].unique().tolist())
-    dropdown_option3 = sorted(df['usecase_category'].unique().tolist())
-    dropdown_option4 = sorted(df['usecase_subcategory'].unique().tolist())
-    dropdown_option5 = sorted(df['platform'].unique().tolist())
-    dropdown_option6 = sorted(df['device'].unique().tolist())
+    Fetch dropdown options from DROPDOWN_DICT for the specified media type.
 
+    Args:
+        media_type (str): Either 'images' or 'videos'.
+
+    Returns:
+        tuple: Dropdown options for the specified media type.
+    """
+    if media_type not in DROPDOWN_DICT:
+        raise ValueError(f"Invalid media type: {media_type}. Choose either 'images' or 'videos'.")
+    
+    options = DROPDOWN_DICT[media_type]
+    dropdown_option1 = options.get("industry_category", [])
+    dropdown_option2 = options.get("industry_subcategory", [])
+    dropdown_option3 = options.get("usecase_category", [])
+    dropdown_option4 = options.get("usecase_subcategory", [])
+    dropdown_option5 = options.get("platform", [])
+    dropdown_option6 = options.get("device", [])
+    
     return dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6
 
 ############################################

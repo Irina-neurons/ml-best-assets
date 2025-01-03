@@ -13,14 +13,9 @@ RUN apt-get update && apt-get install -y libgomp1 && apt-get clean && rm -rf /va
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Define build-time argument for base64 credentials
 ARG GOOGLE_APPLICATION_CREDENTIALS_B64
-
-# Decode and write the credentials to a file
 RUN echo "$GOOGLE_APPLICATION_CREDENTIALS_B64" | base64 -d > /app/credentials.json
-
-# Set environment variables
-ENV GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/credentials.json"
 
 # Expose Gradio's default port
 EXPOSE 8080

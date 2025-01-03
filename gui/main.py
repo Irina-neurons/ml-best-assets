@@ -12,7 +12,7 @@ GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 ############################################################################
 # Gradio App Layout
 with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar') as interface:
-    gr.Markdown("## TOP ASSETS BASED ON SELECTION")
+    gr.Markdown("## TOP SIX ASSETS BASED ON SELECTION")
     # First Row: Asset type selection with radio buttons
     with gr.Row():
         asset_type_radio = gr.Radio(
@@ -46,7 +46,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar') as interfa
     # Define the main output layout with rows for images and metrics
     with gr.Column(visible=False) as output_section:
         output_rows = []
-        for _ in range(10): 
+        for _ in range(6): 
             with gr.Row():
                 with gr.Column(scale=20):
                     output_rows.append(gr.Image(label="Image", interactive=False, visible=False))

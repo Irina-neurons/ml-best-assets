@@ -31,7 +31,22 @@ DF_PATH_IMAGE = "gs://neurons-assets-db/csv-files/eng_mem_images_total_metrics.c
 BENCHMARK_PATH_VIDEO = "gs://neurons-assets-db/csv-files/insights_video_level_newmetrics.csv"
 DF_PATH_VIDEO = "gs://neurons-assets-db/csv-files/eng_mem_videos_total_metrics.csv"
 
-# Local file paths for temporary storage
-LOCAL_BENCHMARK_FILE = os.path.join(TEMP_DIR, "benchmark.csv")
-LOCAL_DF_FILE = os.path.join(TEMP_DIR, "metrics.csv")
 
+DROPDOWN_DICT = {
+    "Image": {
+        "industry_category": ['all', 'durable_goods', 'entertainment_media', 'fast_moving_consumer_goods', 'health', 'services'],
+        "industry_subcategory": ['all', 'automotive', 'consumer_electronics', 'entertainment', 'fashion_accessories', 'financial_insurance_services', 'food_beverage', 'household_products', 'internet_telecommunication_services', 'personal_care_beauty', 'pharmaceuticals', 'sports_gaming', 'travel_hospitality_services'],
+        "usecase_category": ['all', 'digital_ads', 'products', 'traditional_ads', 'websites'],
+        "usecase_subcategory": ['all', 'brand_sites', 'display_ads', 'e_commerce', 'out_of_home_ads', 'packaging', 'print_ads', 'social_media_ads'],
+        "platform": ['all', 'facebook_ads', 'instagram_ads', 'not_applicable', 'twitter_ads'],
+        "device": ['all', 'desktop', 'mobile', 'not_applicable']
+    },
+    "Video": {
+        "industry_category": ['all', 'durable_goods', 'entertainment_media', 'fast_moving_consumer_goods', 'health', 'services'],
+        "industry_subcategory": ['all', 'automotive', 'consumer_electronics', 'entertainment', 'fashion_accessories', 'financial_insurance_services', 'food_beverage', 'household_products', 'internet_telecommunication_services', 'personal_care_beauty', 'pharmaceuticals', 'sports_gaming', 'travel_hospitality_services'],
+        "usecase_category": ['all', 'digital_ads', 'traditional_ads'],
+        "usecase_subcategory": ['all', 'display_ads', 'social_media_ads', 'tv_ads'],
+        "platform": ['all', 'dailymotion_ads', 'facebook_ads', 'instagram_ads', 'not_applicable', 'tiktok_ads', 'youtube_ads'],
+        "device": ['all', 'not_applicable']
+    }
+}
