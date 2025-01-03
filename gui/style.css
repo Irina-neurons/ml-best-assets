@@ -1,0 +1,24 @@
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.custom-radio label::after {
+    content:'\00a0\00a0\00a0\00a0'; /* eq &nbsp; x 4 */
+  }
+
+/* Add spacing between radio buttons */
+.custom-radio input[type="radio"] + label {
+    margin-right: 10px; /* Increase spacing between labels */
+}
+
+/* Center-align the radio buttons and labels */
+.custom-radio {
+    display: flex;
+    gap: 70px; /* Add spacing between options */
+    margin: 10px 0
+}

@@ -6,39 +6,34 @@ from google.cloud import storage
 from typing import Tuple, List, Dict, Optional
 from config import GCS_CLIENT
 
-def gcs_validate_split(gcs_path: str) -> typing.Tuple[str, str]:
-    '''
-    Validate that gcs_path has gs:// prefix and split into bucket_name and remote_path
-    '''
-    if not gcs_path.startswith('gs://'):
-        raise ValueError(f'Not GCS path: {gcs_path}')
-    global GCS_CLIENT
-    bucket_path = gcs_path[5:]
-    bucket_name = bucket_path.split('/')[0]
-    remote_path = '/'.join(bucket_path.split('/')[1:])
-    return bucket_name, remote_path
+
+def get_gcs_blob(gcs_path: str):
+    """
+    Retrieve the GCS blob object from a given GCS path.
+    """
+    if not gcs_path.startswith("gs://"):
+        raise ValueError("Invalid GCS path. It should start with 'gs://'.")
+
+    # Extract bucket and blob path from the GCS path
+    parts = gcs_path.replace("gs://", "").split("/", 1)
+    bucket_name = parts[0]
+    blob_path = parts[1]
+
+    bucket = GCS_CLIENT.bucket(bucket_name)
+    return bucket.blob(blob_path)
 
 
-def get_gcs_blob(gcs_path: str) -> storage.Blob:
-    '''
-    Get blob of desired
-    '''
-    bucket_name, remote_path = gcs_validate_split(gcs_path)
-    bucket = GCS_CLIENT.get_bucket(bucket_name)
-    return bucket.get_blob(remote_path)
-
-    
 def gcs_to_file(gcs_path: str, file_path: str) -> bool:
-    '''
-    Download gcs blob to file
-    '''
+    """
+    Download a GCS blob to a local file.
+    """
     blob = get_gcs_blob(gcs_path)
     if blob is None:
         return False
 
-    global GCS_CLIENT
     with open(file_path, 'wb') as f:
         GCS_CLIENT.download_blob_to_file(blob, f)
+
     return True
         
         
@@ -71,7 +66,7 @@ def get_rank_image(metrics, threshold):
     """
     metric_codes = {
         "clarity": "Clarity",
-        "cognitive_demand": "Cognitive Demand",
+        "cognitive_demand": "CognitiveDemand",
         "focus": "Focus",
         "engagement": "Engagement",
         "engagement_frt": "Engagement_FRT",
@@ -104,7 +99,7 @@ def get_rank_video(metrics, threshold):
     Calculates the rank score for a given asset based on metrics.
     """
     metric_codes = {
-        "cognitive_demand": "Cognitive Demand",
+        "cognitive_demand": "CognitiveDemand",
         "focus": "Focus",
         "engagement_frt": "Engagement_FRT",
         "memory": "Memory"

@@ -9,7 +9,7 @@ from config import TEMP_DIR, GCS_CLIENT, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BE
 
 os.makedirs(TEMP_DIR, exist_ok=True)
 
-
+#################### API FUNCTIONS ####################
 def reset_ui():
     """
     Reset all components to their default states.
@@ -45,12 +45,12 @@ def update_asset_type(asset_type):
         gr.update(visible=True),
         gr.update(visible=True),
         gr.update(visible=True), 
-        gr.update(visible=True, choices=dropdown_option1, value="all"),
-        gr.update(visible=True, choices=dropdown_option2, value="all"),
-        gr.update(visible=True, choices=dropdown_option3, value="all"),
-        gr.update(visible=True, choices=dropdown_option4, value="all"),
-        gr.update(visible=True, choices=dropdown_option5, value="all"),
-        gr.update(visible=True, choices=dropdown_option6, value="all"),
+        gr.update(visible=True, choices=dropdown_option1, value="All"),
+        gr.update(visible=True, choices=dropdown_option2, value="All"),
+        gr.update(visible=True, choices=dropdown_option3, value="All"),
+        gr.update(visible=True, choices=dropdown_option4, value="All"),
+        gr.update(visible=True, choices=dropdown_option5, value="All"),
+        gr.update(visible=True, choices=dropdown_option6, value="All"),
         gr.update(visible=True), # Make submit button visible
         gr.update(visible=False), # Hide no_asset_asset
         gr.update(visible=False), # Hide output_section
@@ -58,34 +58,6 @@ def update_asset_type(asset_type):
         metrics_data
         )
         
-def get_gcs_blob(gcs_path: str):
-    """
-    Retrieve the GCS blob object from a given GCS path.
-    """
-    if not gcs_path.startswith("gs://"):
-        raise ValueError("Invalid GCS path. It should start with 'gs://'.")
-
-    # Extract bucket and blob path from the GCS path
-    parts = gcs_path.replace("gs://", "").split("/", 1)
-    bucket_name = parts[0]
-    blob_path = parts[1]
-
-    bucket = GCS_CLIENT.bucket(bucket_name)
-    return bucket.blob(blob_path)
-
-def gcs_to_file(gcs_path: str, file_path: str) -> bool:
-    """
-    Download a GCS blob to a local file.
-    """
-    blob = get_gcs_blob(gcs_path)
-    if blob is None:
-        return False
-
-    with open(file_path, 'wb') as f:
-        GCS_CLIENT.download_blob_to_file(blob, f)
-
-    return True
-
 
 def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -110,32 +82,58 @@ def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     return benchmark_data, metrics_data
 
 
-# GET Dropdown Options
 def get_dropdown_options(media_type):
     """
-    Fetch dropdown options from DROPDOWN_DICT for the specified media type.
-
+    Fetch dropdown options from DROPDOWN_DICT for the specified media type, with transformed display names.
     Args:
-        media_type (str): Either 'images' or 'videos'.
+        media_type (str): Either 'Image' or 'Video'.
 
     Returns:
-        tuple: Dropdown options for the specified media type.
+        tuple: Dropdown options for the specified media type with display-friendly names.
     """
     if media_type not in DROPDOWN_DICT:
-        raise ValueError(f"Invalid media type: {media_type}. Choose either 'images' or 'videos'.")
+        raise ValueError(f"Invalid media type: {media_type}. Choose either 'Image' or 'Video'.")
     
+    dropdown_options = []
     options = DROPDOWN_DICT[media_type]
-    dropdown_option1 = options.get("industry_category", [])
-    dropdown_option2 = options.get("industry_subcategory", [])
-    dropdown_option3 = options.get("usecase_category", [])
-    dropdown_option4 = options.get("usecase_subcategory", [])
-    dropdown_option5 = options.get("platform", [])
-    dropdown_option6 = options.get("device", [])
-    
-    return dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6
+
+    for column, values in options.items():
+        # Transform backend values to display-friendly names
+        dropdown_options.append([format_display_name(value) for value in values])
+    return tuple(dropdown_options)
+
+
+def format_display_name(value):
+    """
+    Transform a backend value (e.g., 'digital_ads') into a user-friendly display name (e.g., 'Digital Ads').
+    Args:
+        value (str): The backend value to transform.
+    Returns:
+        str: The transformed display name.
+    """
+    return value.replace("_", " ").title()
+
+
+def map_to_backend_values(selected_options):
+    """
+    Map display-friendly values back to their original backend values.
+    Args:
+        selected_options (list or str): List of selected dropdown values or a single value in display format.
+
+    Returns:
+        list or str: Mapped values in backend format.
+    """
+    if isinstance(selected_options, str):
+        return selected_options.lower().replace(" ", "_")
+    elif isinstance(selected_options, list):
+        return [option.lower().replace(" ", "_") for option in selected_options]
+    else:
+        raise ValueError("Input should be a string or a list of strings.")
+
+
 
 ############################################
-# CALCULATE THRESHOLDS
+########## CALCULATE THRESHOLDS LOGIC ######
 def get_thresholds(filter_benchmark):
 
     threshold_df = pd.DataFrame()
