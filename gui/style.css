@@ -1,9 +1,23 @@
+body {
+    background-color: black !important;  /* Set the background color to black */
+    color: white !important;            /* Ensure text color is visible */
+}
+
+.gradio-container {
+    background-color: black !important; /* Set Gradio container background to black */
+    color: white !important;            /* Ensure text color is visible */
+}
+
 .header {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    font-size: 26px;
-    text-align: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc) !important; /* Gradient stays consistent */
+    padding: 30px 0 !important; /* Add spacing */
+    font-size: 40px !important; /* Increase text size */
+    text-align: center !important; /* Center the text */
+    color: white !important; /* Always white text */
+    font-weight: bold !important; /* Bold font */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow */
+    border-radius: 10px !important; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow for the header */
 }
 
 .button {
@@ -15,18 +29,9 @@
     transition: all 0.3s ease;
 }
 
-.custom-radio label::after {
-    content:'\00a0\00a0\00a0\00a0'; /* eq &nbsp; x 4 */
-  }
-
-/* Add spacing between radio buttons */
-.custom-radio input[type="radio"] + label {
-    margin-right: 10px; /* Increase spacing between labels */
-}
-
-/* Center-align the radio buttons and labels */
 .custom-radio {
     display: flex;
-    gap: 70px; /* Add spacing between options */
-    margin: 10px 0
+    justify-content: center; /* Center-align the radio buttons */
+    align-items: center; /* Align items vertically */
+    margin: 10px 0;
 }

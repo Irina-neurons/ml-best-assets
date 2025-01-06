@@ -20,8 +20,14 @@ dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown
 # Gradio App Layout
 
 with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) as interface:
-    gr.Markdown("## TOP SIX ASSETS", elem_classes="header")
-    # First Row: Asset type selection with radio buttons
+    gr.HTML(
+        """
+        <div class="header">
+            Top 6 Neurons Assets
+        </div>
+        """
+    )
+    
     with gr.Row():
         placeholder_asset = gr.Image(value=FILTERS_IMAGE, visible=True, interactive=False, label=".")
 
@@ -29,8 +35,9 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
         asset_type_radio = gr.Radio(
             choices=["Image", "Video"],
             value="Image",
-            label="TYPE",
-            elem_classes="custom-radio"
+            label="ASSET TYPE\n",
+            elem_classes="custom-radio",
+            show_label=False
         )
         
     with gr.Row(visible=True) as dropdown_section:

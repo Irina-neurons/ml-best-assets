@@ -5,6 +5,8 @@ from sqlalchemy import text
 import pandas as pd
 from io import StringIO
 import pyodbc
+from sqlalchemy import text, Table, Column, String, Integer, Float, MetaData, PrimaryKeyConstraint
+
 
 # Google Cloud SQL configuration
 INSTANCE_CONNECTION_NAME = "neurons-development:us-central1:nh-staging-db-instance" 
@@ -113,3 +115,21 @@ def query_img_benchmarks(engine,
     with engine.connect() as conn:
         df = pd.read_sql(query, conn, params=filters)
     return df
+
+def infer_sqlalchemy_types(df):
+    type_mapping = {
+        "int64": Integer,
+        "float64": Float,
+        "object": String,
+        "datetime64[ns]": String,  # You can use DateTime if required
+        "bool": Integer,  # Convert boolean to Integer (0/1)
+    }
+    column_types = {}
+    for col, dtype in df.dtypes.items():
+        dtype_str = str(dtype)
+        column_types[col] = type_mapping.get(dtype_str, String)  # Default to String
+    return column_types
+
+def list_all_tables(conn):
+    query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';"
+    return conn.execute(text(query)).fetchall()
