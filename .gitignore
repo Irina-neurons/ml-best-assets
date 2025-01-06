@@ -8,3 +8,4 @@ credentials.b64
 __pycache__/
 *.pyc
 *.pyo
+*.log

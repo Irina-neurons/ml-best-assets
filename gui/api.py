@@ -16,31 +16,54 @@ def reset_ui():
     """
     return (
         gr.update(visible=True),  # Show placeholder image
-        gr.update(visible=False),  # Hide dropdown_section
-        gr.update(visible=False),  # Hide additional_dropdown_section
-        gr.update(choices=[], value=""),  # Reset industry_category
-        gr.update(choices=[], value=""),  # Reset industry_subcategory
-        gr.update(choices=[], value=""),  # Reset usecase_category
-        gr.update(choices=[], value=""),  # Reset usecase_subcategory
-        gr.update(choices=[], value=""),  # Reset platform
-        gr.update(choices=[], value=""),  # Reset device
-        gr.update(visible=False),  # Hide submit button
+        gr.update(visible=True),  # Show dropdown_section
+        gr.update(visible=True),  # Show additional_dropdown_section
+        gr.update(choices=[], value="All"),  # Reset industry_category
+        gr.update(choices=[], value="All"),  # Reset industry_subcategory
+        gr.update(choices=[], value="All"),  # Reset usecase_category
+        gr.update(choices=[], value="All"),  # Reset usecase_subcategory
+        gr.update(choices=[], value="All"),  # Reset platform
+        gr.update(choices=[], value="All"),  # Reset device
+        gr.update(visible=True),  # Show submit button
         gr.update(visible=False), # Hide no_asset_asset
         gr.update(visible=False), # Hide output_section
         None,  # Reset benchmark_state
         None   # Reset metrics_state
     )
     
+def format_display_name(value):
+    """
+    Transform a backend value (e.g., 'digital_ads') into a user-friendly display name (e.g., 'Digital Ads').
+    Args:
+        value (str): The backend value to transform.
+    Returns:
+        str: The transformed display name.
+    """
+    return value.replace("_", " ").title()
+
+def get_dropdown_options(media_type):
+    """
+    Fetch dropdown options from DROPDOWN_DICT for the specified media type, with transformed display names.
+    Args:
+        media_type (str): Either 'Image' or 'Video'.
+
+    Returns:
+        tuple: Dropdown options for the specified media type with display-friendly names.
+    """
+    if media_type not in DROPDOWN_DICT:
+        raise ValueError(f"Invalid media type: {media_type}. Choose either 'Image' or 'Video'.")
+    
+    dropdown_options = []
+    options = DROPDOWN_DICT[media_type]
+
+    for column, values in options.items():
+        # Transform backend values to display-friendly names
+        dropdown_options.append([format_display_name(value) for value in values])
+    return tuple(dropdown_options)
+
+
 def update_asset_type(asset_type):
-    # Logic to fetch dropdown options based on asset type
-    if asset_type == "Image":
-        benchmark_data, metrics_data = get_asset_data("Image")
-    else:
-        benchmark_data, metrics_data = get_asset_data("Video")
-
     dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6   = get_dropdown_options(asset_type)
-
-    # Update dropdown choices and make sections visible
     return (
         gr.update(visible=True),
         gr.update(visible=True),
@@ -54,10 +77,16 @@ def update_asset_type(asset_type):
         gr.update(visible=True), # Make submit button visible
         gr.update(visible=False), # Hide no_asset_asset
         gr.update(visible=False), # Hide output_section
-        benchmark_data,
-        metrics_data
         )
-        
+    
+# def get_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
+#     # Logic to fetch dropdown options based on asset type
+#     if asset_type == "Image":
+#         benchmark_data, metrics_data = get_asset_data("Image")
+#     else:
+#         benchmark_data, metrics_data = get_asset_data("Video")
+#     return benchmark_data, metrics_data
+
 
 def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -82,36 +111,10 @@ def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     return benchmark_data, metrics_data
 
 
-def get_dropdown_options(media_type):
-    """
-    Fetch dropdown options from DROPDOWN_DICT for the specified media type, with transformed display names.
-    Args:
-        media_type (str): Either 'Image' or 'Video'.
-
-    Returns:
-        tuple: Dropdown options for the specified media type with display-friendly names.
-    """
-    if media_type not in DROPDOWN_DICT:
-        raise ValueError(f"Invalid media type: {media_type}. Choose either 'Image' or 'Video'.")
-    
-    dropdown_options = []
-    options = DROPDOWN_DICT[media_type]
-
-    for column, values in options.items():
-        # Transform backend values to display-friendly names
-        dropdown_options.append([format_display_name(value) for value in values])
-    return tuple(dropdown_options)
 
 
-def format_display_name(value):
-    """
-    Transform a backend value (e.g., 'digital_ads') into a user-friendly display name (e.g., 'Digital Ads').
-    Args:
-        value (str): The backend value to transform.
-    Returns:
-        str: The transformed display name.
-    """
-    return value.replace("_", " ").title()
+
+
 
 
 def map_to_backend_values(selected_options):
@@ -213,25 +216,34 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     which_metric = []
     for _, row in tqdm(filtered_df.iterrows(), total=filtered_df.shape[0]):
         #metrics = get_scores(row)
-        if asset_type == "Image":
-            metrics = {
+        
+        metrics = {
             "cognitive_demand": row['cognitive_demand'],
             "focus": row['focus'],
-            "clarity": row['clarity'],
             "memory": row['memory'],
-            "engagement": row['engagement'],
             "engagement_frt": row['engagement_frt'],
         }
-            rank, selected_metrics = get_rank_image(metrics, thresholds_df)
+        rank, selected_metrics = get_rank_video(metrics, thresholds_df)
+        
+        # if asset_type == "Image":
+        #     metrics = {
+        #     "cognitive_demand": row['cognitive_demand'],
+        #     "focus": row['focus'],
+        #     "clarity": row['clarity'],
+        #     "memory": row['memory'],
+        #     "engagement": row['engagement'],
+        #     "engagement_frt": row['engagement_frt'],
+        # }
+        #     rank, selected_metrics = get_rank_image(metrics, thresholds_df)
 
-        else:
-            metrics = {
-            "cognitive_demand": row['cognitive_demand'],
-            "focus": row['focus'],
-            "memory": row['memory'],
-            "engagement_frt": row['engagement_frt'],
-        }
-            rank, selected_metrics = get_rank_video(metrics, thresholds_df)
+        # else:
+        #     metrics = {
+        #     "cognitive_demand": row['cognitive_demand'],
+        #     "focus": row['focus'],
+        #     "memory": row['memory'],
+        #     "engagement_frt": row['engagement_frt'],
+        # }
+        #     rank, selected_metrics = get_rank_video(metrics, thresholds_df)
 
         ranks.append(rank)
         which_metric.append(selected_metrics)

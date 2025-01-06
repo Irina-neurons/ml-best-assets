@@ -3,6 +3,8 @@ from google.cloud.sql.connector import Connector
 from tqdm.auto import tqdm
 from sqlalchemy import text
 import pandas as pd
+from io import StringIO
+import pyodbc
 
 # Google Cloud SQL configuration
 INSTANCE_CONNECTION_NAME = "neurons-development:us-central1:nh-staging-db-instance" 
@@ -24,7 +26,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger()
 
-
 # Function to connect to the Cloud SQL database
 def get_connection():
     return connector.connect(
@@ -40,17 +41,19 @@ def print_schema(data, table_name):
     for column, dtype in data.dtypes.items():
         print(f" - Column: {column}, Type: {dtype}")
 
+
 def fetch_schema_from_db(engine, table_name):
-    query = f"""
+    query = text(f"""
         SELECT column_name, data_type
         FROM information_schema.columns
         WHERE table_name = '{table_name}';
-    """
+    """)
     with engine.connect() as conn:
-        result = conn.execute(query)
+        result = conn.execute(query, {"table_name": table_name})
         print(f"Schema for table '{table_name}':")
-        for row in result:
+        for row in result.mappings():  # Use `mappings()` to get dictionary-like rows
             print(f" - Column: {row['column_name']}, Type: {row['data_type']}")
+
 
 # Function to create a table and insert data
 def create_table_and_insert_data(data, table_name, engine, metadata, batch_size=1000):

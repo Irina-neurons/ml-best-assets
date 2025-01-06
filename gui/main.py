@@ -1,7 +1,7 @@
 import gradio as gr
 import os
 import atexit
-from api import run_selection, reset_ui, update_asset_type, cleanup_temp_dir, map_to_backend_values
+from api import run_selection, reset_ui, update_asset_type, cleanup_temp_dir, map_to_backend_values, get_asset_data, get_dropdown_options
 from config import FILTERS_IMAGE, NO_ASSET_IMAGE
 
 # Load the environment variables
@@ -10,39 +10,47 @@ load_dotenv()
 GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 css_file = "./style.css"
 
+try:
+    css = open(css_file).read()
+except:
+    css = "style.css"
+
+dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6   = get_dropdown_options('Image')
 ############################################################################
 # Gradio App Layout
-with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=open(css_file).read()) as interface:
-    gr.Markdown("## TOP SIX ASSETS BASED ON SELECTION")
+
+with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) as interface:
+    gr.Markdown("## TOP SIX ASSETS", elem_classes="header")
     # First Row: Asset type selection with radio buttons
+    with gr.Row():
+        placeholder_asset = gr.Image(value=FILTERS_IMAGE, visible=True, interactive=False, label=".")
+
     with gr.Row():
         asset_type_radio = gr.Radio(
             choices=["Image", "Video"],
-            value=None,
-            label="ASSETS TYPE",
+            value="Image",
+            label="TYPE",
             elem_classes="custom-radio"
         )
         
+    with gr.Row(visible=True) as dropdown_section:
+        industry_category = gr.Dropdown(choices=dropdown_option1, label="INDUSTRY CATEGORY", value="All")
+        industry_subcategory = gr.Dropdown(choices=dropdown_option2, label="INDUSTRY SUBCATEGORY", value="All")
 
-    # Second Row: Dropdowns (initially hidden until asset type is selected)
-    with gr.Row(visible=False) as dropdown_section:
-        industry_category = gr.Dropdown(choices=['All'], label="INDUSTRY CATEGORY", value="All")
-        industry_subcategory = gr.Dropdown(choices=['All'], label="INDUSTRY SUBCATEGORY", value="All")
+    with gr.Row(visible=True) as additional_dropdown_section:
+        usecase_category = gr.Dropdown(choices=dropdown_option3, label="USECASE CATEGORY", value="All")
+        usecase_subcategory = gr.Dropdown(choices=dropdown_option4, label="USECASE SUBCATEGORY", value="All")
+        platform = gr.Dropdown(choices=dropdown_option5, label="PLATFORM", value="All")
+        device = gr.Dropdown(choices=dropdown_option6, label="DEVICE", value="All")
 
-    with gr.Row(visible=False) as additional_dropdown_section:
-        usecase_category = gr.Dropdown(choices=['All'], label="USECASE CATEGORY", value="All")
-        usecase_subcategory = gr.Dropdown(choices=['All'], label="USECASE SUBCATEGORY", value="All")
-        platform = gr.Dropdown(choices=['All'], label="PLATFORM", value="All")
-        device = gr.Dropdown(choices=['All'], label="DEVICE", value="All")
-
-    submit_button = gr.Button("SUBMIT", visible=False, elem_classes="button")
+    submit_button = gr.Button("SUBMIT", visible=True, elem_classes="button")
+    
     
     # Initial Output States
     benchmark_state = gr.State()
     metrics_state = gr.State()
     
     # Output: Two columns, one for images and one for metrics
-    placeholder_asset = gr.Image(value=FILTERS_IMAGE, visible=True, interactive=False, label=".")
     no_asset_asset = gr.Image(value=NO_ASSET_IMAGE, visible=False, interactive=False, label="No Asset")
 
     # Define the main output layout with rows for images and metrics
@@ -61,29 +69,6 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=open(c
                         with gr.Column(scale=3):
                             output_rows.append(gr.HTML(label="Metric", value="<p>Metrics will appear here</p>"))
     
-    
-
-    # Radio Button Click Event
-    asset_type_radio.change(
-    fn=reset_ui,  # Reset UI immediately
-    inputs=[],
-    outputs=[
-        placeholder_asset,
-        dropdown_section,
-        additional_dropdown_section,
-        industry_category,
-        industry_subcategory,
-        usecase_category,
-        usecase_subcategory,
-        platform,
-        device,
-        submit_button,
-        no_asset_asset,
-        output_section,
-        benchmark_state,
-        metrics_state
-        ]
-    )
     asset_type_radio.change(
         fn=update_asset_type,
         inputs=[asset_type_radio],
@@ -100,19 +85,18 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=open(c
             submit_button,
             no_asset_asset,
             output_section,
-            benchmark_state,
-            metrics_state
         ]
     )
     
     # Define the processing function
-    def process_inputs(v1, v2, v3, v4, v5, v6, df_benchmark, df_metrics, asset_type):
+    def process_inputs(v1, v2, v3, v4, v5, v6, asset_type):
         v1 = map_to_backend_values(v1)
         v2 = map_to_backend_values(v2)
         v3 = map_to_backend_values(v3)
         v4 = map_to_backend_values(v4)
         v5 = map_to_backend_values(v5)
         v6 = map_to_backend_values(v6)
+        df_benchmark, df_metrics = get_asset_data(asset_type)
         result = run_selection(v1, v2, v3, v4, v5, v6, df_benchmark, df_metrics, asset_type)
 
         if not result or not result[0]:  # No assets found
@@ -174,8 +158,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=open(c
         inputs=[
             industry_category, industry_subcategory, 
             usecase_category, usecase_subcategory, 
-            platform, device, 
-            benchmark_state, metrics_state, asset_type_radio
+            platform, device, asset_type_radio
         ],
         outputs=[placeholder_asset, no_asset_asset, output_section] + output_rows
     )
