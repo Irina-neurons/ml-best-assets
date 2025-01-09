@@ -60,41 +60,7 @@ def filter_condition_bm(column, desired_list):
 
 
 
-def get_rank_image(metrics, threshold):
-    """
-    Calculates the rank score for a given asset based on metrics.
-    """
-    metric_codes = {
-        "clarity": "Clarity",
-        "cognitive_demand": "CognitiveDemand",
-        "focus": "Focus",
-        "engagement": "Engagement",
-        "engagement_frt": "Engagement_FRT",
-        "memory": "Memory"
-    }
-    conditions = [
-        metrics["clarity"] > threshold["clarity"],
-        threshold["cognitive_demand_min"] < metrics["cognitive_demand"] < threshold["cognitive_demand_max"],
-        metrics["focus"] > threshold["focus"],
-        metrics["engagement"] > threshold["engagement"],
-        metrics["engagement_frt"] > threshold["engagement_frt"],
-        metrics["memory"] > threshold["memory"],
-    ]
-    
-    contributing_metrics = [
-        metric_codes["clarity"] if conditions[0] else "",
-        metric_codes["cognitive_demand"] if conditions[1] else "",
-        metric_codes["focus"] if conditions[2] else "",
-        metric_codes["engagement"] if conditions[3] else "",
-        metric_codes["engagement_frt"] if conditions[4] else "",
-        metric_codes["memory"] if conditions[5] else "",
-    ]
-    score = sum(conditions)
-    which_metric = " ".join(filter(None, contributing_metrics))
-    return score, which_metric
-
-
-def get_rank_video(metrics, threshold):
+def get_rank(metrics, threshold):
     """
     Calculates the rank score for a given asset based on metrics.
     """

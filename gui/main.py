@@ -1,7 +1,7 @@
 import gradio as gr
 import os
 import atexit
-from api import run_selection, reset_ui, update_asset_type, cleanup_temp_dir, map_to_backend_values, get_asset_data, get_dropdown_options
+from api import run_selection, update_asset_type, cleanup_temp_dir, map_to_backend_values, get_asset_data, get_dropdown_options
 from config import FILTERS_IMAGE, NO_ASSET_IMAGE
 
 # Load the environment variables
@@ -15,15 +15,15 @@ try:
 except:
     css = "style.css"
 
-dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6   = get_dropdown_options('Image')
-############################################################################
+dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6, dropdown_option7   = get_dropdown_options('Image')
+#################################################################################################################
 # Gradio App Layout
 
 with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) as interface:
     gr.HTML(
         """
         <div class="header">
-            Top 6 Neurons Assets
+            Top 10 Neurons Assets
         </div>
         """
     )
@@ -49,6 +49,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
         usecase_subcategory = gr.Dropdown(choices=dropdown_option4, label="USECASE SUBCATEGORY", value="All")
         platform = gr.Dropdown(choices=dropdown_option5, label="PLATFORM", value="All")
         device = gr.Dropdown(choices=dropdown_option6, label="DEVICE", value="All")
+        context = gr.Dropdown(choices=dropdown_option7, label="CONTEXT", value="No")
 
     submit_button = gr.Button("SUBMIT", visible=True, elem_classes="button")
     
@@ -63,7 +64,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
     # Define the main output layout with rows for images and metrics
     with gr.Column(visible=False) as output_section:
         output_rows = []
-        for _ in range(6): 
+        for _ in range(10): 
             with gr.Row():
                 with gr.Column(scale=20):
                     output_rows.append(gr.Image(label="Image", interactive=False, visible=False))
@@ -89,6 +90,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
             usecase_subcategory,
             platform,
             device,
+            context,
             submit_button,
             no_asset_asset,
             output_section,
@@ -96,15 +98,16 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
     )
     
     # Define the processing function
-    def process_inputs(v1, v2, v3, v4, v5, v6, asset_type):
+    def process_inputs(v1, v2, v3, v4, v5, v6, v7, asset_type):
         v1 = map_to_backend_values(v1)
         v2 = map_to_backend_values(v2)
         v3 = map_to_backend_values(v3)
         v4 = map_to_backend_values(v4)
         v5 = map_to_backend_values(v5)
         v6 = map_to_backend_values(v6)
+        v7 = map_to_backend_values(v7)
         df_benchmark, df_metrics = get_asset_data(asset_type)
-        result = run_selection(v1, v2, v3, v4, v5, v6, df_benchmark, df_metrics, asset_type)
+        result = run_selection(v1, v2, v3, v4, v5, v6, v7, df_benchmark, df_metrics, asset_type)
 
         if not result or not result[0]:  # No assets found
             placeholder_update = gr.update(visible=False)
@@ -165,7 +168,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
         inputs=[
             industry_category, industry_subcategory, 
             usecase_category, usecase_subcategory, 
-            platform, device, asset_type_radio
+            platform, device, context, asset_type_radio
         ],
         outputs=[placeholder_asset, no_asset_asset, output_section] + output_rows
     )

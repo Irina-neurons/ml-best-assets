@@ -1,5 +1,6 @@
 .venv
 gui/.env
+gui_sql/.env
 credentials.b64
 */__pycache__
 .DS_Store

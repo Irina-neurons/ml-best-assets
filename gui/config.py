@@ -11,9 +11,6 @@ credentials, project_id = default()
 # Initialize the Google Cloud Storage client with ADC
 GCS_CLIENT = storage.Client(credentials=credentials, project=project_id)
 
-# Initialize the Google Cloud Storage client with the credentials
-GCS_CLIENT = storage.Client(credentials=credentials)
-
 # Temporary file paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -39,7 +36,8 @@ DROPDOWN_DICT = {
         "usecase_category": ['all', 'digital_ads', 'products', 'traditional_ads', 'websites'],
         "usecase_subcategory": ['all', 'brand_sites', 'display_ads', 'e_commerce', 'out_of_home_ads', 'packaging', 'print_ads', 'social_media_ads'],
         "platform": ['all', 'facebook_ads', 'instagram_ads', 'not_applicable', 'twitter_ads'],
-        "device": ['all', 'desktop', 'mobile', 'not_applicable']
+        "device": ['all', 'desktop', 'mobile', 'not_applicable'],
+        "context": ['all', 'no', 'yes'],
     },
     "Video": {
         "industry_category": ['all', 'durable_goods', 'entertainment_media', 'fast_moving_consumer_goods', 'health', 'services'],
@@ -47,6 +45,7 @@ DROPDOWN_DICT = {
         "usecase_category": ['all', 'digital_ads', 'traditional_ads'],
         "usecase_subcategory": ['all', 'display_ads', 'social_media_ads', 'tv_ads'],
         "platform": ['all', 'dailymotion_ads', 'facebook_ads', 'instagram_ads', 'not_applicable', 'tiktok_ads', 'youtube_ads'],
-        "device": ['all', 'not_applicable']
+        "device": ['all', 'not_applicable'],
+        "context": ['all', 'no'],
     }
 }

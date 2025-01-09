@@ -4,33 +4,13 @@ import gradio as gr
 import pandas as pd
 from google.cloud import storage
 from typing import Tuple, List, Dict, Optional
-from utils import filter_condition, filter_condition_bm, get_rank_image, get_rank_video, gcs_to_file
-from config import TEMP_DIR, GCS_CLIENT, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BENCHMARK_PATH_VIDEO, DF_PATH_VIDEO, DROPDOWN_DICT
+from utils import filter_condition, filter_condition_bm, get_rank, gcs_to_file
+from config import TEMP_DIR, BENCHMARK_PATH_IMAGE, DF_PATH_IMAGE, BENCHMARK_PATH_VIDEO, DF_PATH_VIDEO, DROPDOWN_DICT
 
 os.makedirs(TEMP_DIR, exist_ok=True)
 
 #################### API FUNCTIONS ####################
-def reset_ui():
-    """
-    Reset all components to their default states.
-    """
-    return (
-        gr.update(visible=True),  # Show placeholder image
-        gr.update(visible=True),  # Show dropdown_section
-        gr.update(visible=True),  # Show additional_dropdown_section
-        gr.update(choices=[], value="All"),  # Reset industry_category
-        gr.update(choices=[], value="All"),  # Reset industry_subcategory
-        gr.update(choices=[], value="All"),  # Reset usecase_category
-        gr.update(choices=[], value="All"),  # Reset usecase_subcategory
-        gr.update(choices=[], value="All"),  # Reset platform
-        gr.update(choices=[], value="All"),  # Reset device
-        gr.update(visible=True),  # Show submit button
-        gr.update(visible=False), # Hide no_asset_asset
-        gr.update(visible=False), # Hide output_section
-        None,  # Reset benchmark_state
-        None   # Reset metrics_state
-    )
-    
+  
 def format_display_name(value):
     """
     Transform a backend value (e.g., 'digital_ads') into a user-friendly display name (e.g., 'Digital Ads').
@@ -59,11 +39,12 @@ def get_dropdown_options(media_type):
     for column, values in options.items():
         # Transform backend values to display-friendly names
         dropdown_options.append([format_display_name(value) for value in values])
+    print(dropdown_options)
     return tuple(dropdown_options)
 
 
 def update_asset_type(asset_type):
-    dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6   = get_dropdown_options(asset_type)
+    dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6, dropdown_option7   = get_dropdown_options(asset_type)
     return (
         gr.update(visible=True),
         gr.update(visible=True),
@@ -74,6 +55,7 @@ def update_asset_type(asset_type):
         gr.update(visible=True, choices=dropdown_option4, value="All"),
         gr.update(visible=True, choices=dropdown_option5, value="All"),
         gr.update(visible=True, choices=dropdown_option6, value="All"),
+        gr.update(visible=True, choices=dropdown_option7, value="No"),
         gr.update(visible=True), # Make submit button visible
         gr.update(visible=False), # Hide no_asset_asset
         gr.update(visible=False), # Hide output_section
@@ -109,12 +91,6 @@ def get_asset_data(asset_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
         benchmark_data = benchmark_data[benchmark_data['time'].isin(['total'])].copy()
 
     return benchmark_data, metrics_data
-
-
-
-
-
-
 
 
 def map_to_backend_values(selected_options):
@@ -174,7 +150,7 @@ def calculate_distance_to_best(row, metrics, best_values):
     return distance
 
 
-def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
+def return_top(df, v1, v2, v3, v4, v5, v6, v7, df_benchmark):
     # Define filters based on conditions
     filter_industry = [] if v1 == ['all'] else v1
     filter_subindustry = [] if v2 == ['all'] else v2
@@ -182,6 +158,7 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     filter_subusecase = [] if v4 == ['all'] else v4
     filter_platform = [] if v5 == ['all'] else v5
     filter_device = [] if v6 == ['all'] else v6
+    filter_context = [] if v7 == ['all'] else v7
     
     filtered_df = df[
         filter_condition(df['industry_category'], filter_industry) &
@@ -189,8 +166,9 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
         filter_condition(df['usecase_category'], filter_usecase) &
         filter_condition(df['usecase_subcategory'], filter_subusecase)&
         filter_condition(df['platform'], filter_platform)&
-        filter_condition(df['device'], filter_device)
-    ].copy()
+        filter_condition(df['device'], filter_device)&
+        filter_condition(df['context'], filter_context)
+        ].copy()
         
     filtered_benchmarks = df_benchmark[
         filter_condition_bm(df_benchmark['industry_category'], v1) &
@@ -198,7 +176,8 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
         filter_condition_bm(df_benchmark['usecase_category'], v3) &
         filter_condition_bm(df_benchmark['usecase_subcategory'], v4)&
         filter_condition_bm(df_benchmark['platform'], v5)&
-        filter_condition_bm(df_benchmark['device'], v6)
+        filter_condition_bm(df_benchmark['device'], v6)&
+        filter_condition_bm(df_benchmark['context'], v7)
     ].copy()
     
     if isinstance(filtered_df, pd.DataFrame) and filtered_df.empty:
@@ -209,41 +188,20 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     thresholds_df = get_thresholds(filtered_benchmarks)
     
     filtered_df = filtered_df[['asset_id','metric','value','path_bucket']].drop_duplicates().copy()
+    filtered_df = filtered_df[filtered_df['metric'].isin(['cognitive_demand', 'focus', 'memory', 'engagement_frt'])].copy()
     filtered_df = filtered_df.pivot(index=['asset_id','path_bucket'], columns='metric', values='value').reset_index()
     
     
     ranks = []
     which_metric = []
-    for _, row in tqdm(filtered_df.iterrows(), total=filtered_df.shape[0]):
-        #metrics = get_scores(row)
-        
+    for _, row in tqdm(filtered_df.iterrows(), total=filtered_df.shape[0]):        
         metrics = {
             "cognitive_demand": row['cognitive_demand'],
             "focus": row['focus'],
             "memory": row['memory'],
             "engagement_frt": row['engagement_frt'],
         }
-        rank, selected_metrics = get_rank_video(metrics, thresholds_df)
-        
-        # if asset_type == "Image":
-        #     metrics = {
-        #     "cognitive_demand": row['cognitive_demand'],
-        #     "focus": row['focus'],
-        #     "clarity": row['clarity'],
-        #     "memory": row['memory'],
-        #     "engagement": row['engagement'],
-        #     "engagement_frt": row['engagement_frt'],
-        # }
-        #     rank, selected_metrics = get_rank_image(metrics, thresholds_df)
-
-        # else:
-        #     metrics = {
-        #     "cognitive_demand": row['cognitive_demand'],
-        #     "focus": row['focus'],
-        #     "memory": row['memory'],
-        #     "engagement_frt": row['engagement_frt'],
-        # }
-        #     rank, selected_metrics = get_rank_video(metrics, thresholds_df)
+        rank, selected_metrics = get_rank(metrics, thresholds_df)
 
         ranks.append(rank)
         which_metric.append(selected_metrics)
@@ -254,29 +212,30 @@ def return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type):
     best_values = {
     "cognitive_demand": filtered_df["cognitive_demand"].median(),
     "focus": filtered_df["focus"].max(),
-    "clarity": filtered_df["clarity"].max() if "clarity" in filtered_df.columns else None,
+    #"clarity": filtered_df["clarity"].max() if "clarity" in filtered_df.columns else None,
     "memory": filtered_df["memory"].max(),
-    "engagement": filtered_df["engagement"].max() if "engagement" in filtered_df.columns else None,
+    #"engagement": filtered_df["engagement"].max() if "engagement" in filtered_df.columns else None,
     "engagement_frt": filtered_df["engagement_frt"].max(),
     }
     filtered_df["distance_to_best"] = filtered_df.apply(
     lambda row: calculate_distance_to_best(
-        row, metrics=["cognitive_demand", "focus", "clarity", "memory", "engagement", "engagement_frt"], best_values=best_values), axis=1)
+        row, metrics=["cognitive_demand", "focus", "memory", "engagement_frt"], best_values=best_values), axis=1)
     
     top_df = filtered_df[['asset_id', 'rank', 'which_metric', 'path_bucket', 'distance_to_best']].drop_duplicates().copy()
-    top_df = top_df.sort_values(by=["rank", "distance_to_best"], ascending=[False, True]).reset_index(drop=True)
+    top_df = top_df.sort_values(by=["rank", "distance_to_best", "asset_id"], ascending=[False, True, True]).reset_index(drop=True)
     return top_df.head(10)
 
 
-def run_selection(v1, v2, v3, v4, v5, v6, df_benchmark, df, asset_type):
+def run_selection(v1, v2, v3, v4, v5, v6, v7, df_benchmark, df, asset_type):
     v1 = [v1]
     v2 = [v2]
     v3 = [v3]
     v4 = [v4]
     v5 = [v5]
     v6 = [v6]
+    v7 = [v7]
     
-    filtered_df = return_top(df, v1, v2, v3, v4, v5, v6, df_benchmark, asset_type)
+    filtered_df = return_top(df, v1, v2, v3, v4, v5, v6, v7, df_benchmark)
        
     if isinstance(filtered_df, str) and filtered_df == "no data":
         return False
