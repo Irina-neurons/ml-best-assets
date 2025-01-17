@@ -2,7 +2,7 @@ import gradio as gr
 import os
 import atexit
 from api import run_selection, update_asset_type, cleanup_temp_dir, map_to_backend_values, get_dropdown_options
-from config import FILTERS_IMAGE, NO_ASSET_IMAGE
+from config import FILTERS_IMAGE, NO_ASSET_IMAGE, TEMP_DIR
 
 # Load the environment variables
 from dotenv import load_dotenv
@@ -52,7 +52,7 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
         context = gr.Dropdown(choices=dropdown_option7, label="CONTEXT", value="No")
 
     submit_button = gr.Button("SUBMIT", visible=True, elem_classes="button")
-    
+    download_output = gr.File(label="DOWNLOAD IP FILE", visible=False)
     
     # Initial Output States
     benchmark_state = gr.State()
@@ -114,10 +114,11 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
             no_asset_update = gr.update(visible=True)
             output_section_update = gr.update(visible=False)  # Keep output section hidden
             output_updates = [gr.update(visible=False)] * len(output_rows)  # Hide all output rows
-            return [placeholder_update, no_asset_update, output_section_update] + output_updates
+            download_update = gr.update(visible=False)
+            return [placeholder_update, no_asset_update, output_section_update, download_update] + output_updates
 
         else:
-            asset_paths, metrics, ranks = result
+            zip_file_path, asset_paths, metrics, ranks = result
 
             # Ensure there are exactly 6 results (pad if necessary)
             max_rows = len(output_rows) // 4  # Each row has 4 components
@@ -157,8 +158,9 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
             placeholder_update = gr.update(visible=False)
             no_asset_update = gr.update(visible=False)
             output_section_update = gr.update(visible=True)
+            download_update = gr.update(value=zip_file_path, visible=True)
 
-            return [placeholder_update, no_asset_update, output_section_update] + interleaved_outputs
+            return [placeholder_update, no_asset_update, output_section_update,download_update] + interleaved_outputs
 
         
     
@@ -170,8 +172,10 @@ with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) a
             usecase_category, usecase_subcategory, 
             platform, device, context, asset_type_radio
         ],
-        outputs=[placeholder_asset, no_asset_asset, output_section] + output_rows
+        outputs=[placeholder_asset, no_asset_asset, output_section, download_output] + output_rows
     )
+
+
 
 ############################################################################
 # Register cleanup function

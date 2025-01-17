@@ -4,6 +4,8 @@ import gradio as gr
 import pandas as pd
 import sqlalchemy
 from typing import Tuple, List, Dict, Optional
+import zipfile
+from pathlib import Path
 from utils_cloud_sql import get_rank, gcs_to_file, query_metrics_table, get_thresholds_df, get_connection
 from config import TEMP_DIR, DROPDOWN_DICT
 
@@ -149,8 +151,7 @@ def run_selection(v1, v2, v3, v4, v5, v6, v7, asset_type):
     # Query SQL Cloud to get the data
     df=query_metrics_table(engine, asset_type, **filters)
     threshold_df = get_thresholds_df(engine, asset_type, get_filters=filters)
-    print(df.columns)
-    print(threshold_df.columns)
+
     if isinstance(df, pd.DataFrame) and df.empty:
         return False
     if isinstance(threshold_df, pd.DataFrame) and threshold_df.empty:
@@ -164,9 +165,22 @@ def run_selection(v1, v2, v3, v4, v5, v6, v7, asset_type):
     for _, row in top_df.iterrows():
         gcs_to_file(row['path_bucket'], row['local_path'])
 
-    return top_df['local_path'].tolist(), top_df['which_metric'].tolist(), top_df['rank'].tolist()
+    local_paths = top_df['local_path'].tolist()
+    zip_file_path = create_zip_file(local_paths)
+    return zip_file_path, local_paths, top_df['which_metric'].tolist(), top_df['rank'].tolist()
 
 
 def cleanup_temp_dir():
     if os.path.exists(TEMP_DIR):
         shutil.rmtree(TEMP_DIR)
+
+
+##################### DOWNLOAD #####################
+
+# Function to create a ZIP file from the top files
+def create_zip_file(file_paths: List[str]) -> str:
+    zip_path = os.path.join(TEMP_DIR, "top_files.zip")
+    with zipfile.ZipFile(zip_path, 'w') as zipf:
+        for file_path in file_paths:
+            zipf.write(file_path, arcname=os.path.basename(file_path))
+    return zip_path
