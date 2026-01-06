@@ -12,7 +12,7 @@ remote_image_name := gcp_region + "-docker.pkg.dev" / gcp_project / "best-assets
 remote_image := remote_image_name + ":" + revision
 
 # Build-time argument for base64 credentials
-google_credentials_b64 := "$GOOGLE_APPLICATION_CREDENTIALS_B64"
+google_credentials_b64 := env_var('GOOGLE_APPLICATION_CREDENTIALS_B64')
 
 # Deployment paths
 deploy_dir := ".deploy"

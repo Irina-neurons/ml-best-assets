@@ -1,37 +1,194 @@
+/* ==================== GLOBAL STYLES ==================== */
 body {
-    background-color: black !important;  /* Set the background color to black */
-    color: white !important;            /* Ensure text color is visible */
+    background-color: black !important;
+    color: white !important;
 }
 
 .gradio-container {
-    background-color: black !important; /* Set Gradio container background to black */
-    color: white !important;            /* Ensure text color is visible */
+    background-color: black !important;
+    color: white !important;
 }
 
+/* ==================== HEADER ==================== */
 .header {
-    background: linear-gradient(to right, #6a11cb, #2575fc) !important; /* Gradient stays consistent */
-    padding: 30px 0 !important; /* Add spacing */
-    font-size: 40px !important; /* Increase text size */
-    text-align: center !important; /* Center the text */
-    color: white !important; /* Always white text */
-    font-weight: bold !important; /* Bold font */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow */
-    border-radius: 10px !important; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow for the header */
+    background: linear-gradient(to right, #6a11cb, #2575fc) !important;
+    padding: 30px 0 !important;
+    font-size: 40px !important;
+    text-align: center !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
-.button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
+/* ==================== SECTION TITLES ==================== */
+.section-title {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: white !important;
 }
 
-.custom-radio {
-    display: flex;
-    justify-content: center; /* Center-align the radio buttons */
-    align-items: center; /* Align items vertically */
-    margin: 10px 0;
+/* ==================== ASSET TYPE BUTTONS ==================== */
+.type-btn {
+    min-width: 120px !important;
+    padding: 12px 24px !important;
+    margin: 4px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.type-btn-selected {
+    background-color: #f97316 !important;
+    color: white !important;
+    border: 2px solid #ea580c !important;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4) !important;
+}
+
+.type-btn-unselected {
+    background-color: #374151 !important;
+    color: #9ca3af !important;
+    border: 2px solid #4b5563 !important;
+}
+
+.type-btn-unselected:hover {
+    background-color: #4b5563 !important;
+    color: white !important;
+    border-color: #6b7280 !important;
+}
+
+/* ==================== PURPOSE BUTTONS ==================== */
+.purpose-btn {
+    min-width: 140px !important;
+    padding: 12px 24px !important;
+    margin: 4px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.purpose-btn-selected {
+    background-color: #8b5cf6 !important;
+    color: white !important;
+    border: 2px solid #7c3aed !important;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4) !important;
+}
+
+.purpose-btn-unselected {
+    background-color: #374151 !important;
+    color: #9ca3af !important;
+    border: 2px solid #4b5563 !important;
+}
+
+.purpose-btn-unselected:hover {
+    background-color: #4b5563 !important;
+    color: white !important;
+    border-color: #6b7280 !important;
+}
+
+/* ==================== DROPDOWNS ==================== */
+.gradio-dropdown {
+    background-color: #1f2937 !important;
+    border: 1px solid #374151 !important;
+    border-radius: 8px !important;
+}
+
+.gradio-dropdown select {
+    background-color: #1f2937 !important;
+    color: white !important;
+}
+
+/* Dropdown labels */
+label {
+    color: #d1d5db !important;
+    font-weight: 500 !important;
+}
+
+/* ==================== SUBMIT BUTTON ==================== */
+.gradio-button.primary {
+    background-color: #f97316 !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 12px 32px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    font-size: 16px !important;
+    transition: all 0.2s ease !important;
+}
+
+.gradio-button.primary:hover {
+    background-color: #ea580c !important;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4) !important;
+}
+
+.gradio-button.primary:disabled {
+    background-color: #6b7280 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+/* ==================== FILE DOWNLOAD ==================== */
+.gradio-file {
+    background-color: #1f2937 !important;
+    border: 1px solid #374151 !important;
+    border-radius: 8px !important;
+}
+
+/* ==================== TEXTBOX ==================== */
+.gradio-textbox textarea {
+    background-color: #1f2937 !important;
+    color: white !important;
+    border: 1px solid #374151 !important;
+    border-radius: 8px !important;
+}
+
+/* ==================== MARKDOWN ==================== */
+.markdown-text h1, 
+.markdown-text h2, 
+.markdown-text h3 {
+    color: white !important;
+}
+
+/* ==================== HORIZONTAL DIVIDER ==================== */
+hr {
+    border-color: #374151 !important;
+    margin: 20px 0 !important;
+}
+
+/* ==================== DISABLED STATE ==================== */
+.gradio-dropdown[disabled],
+.gradio-dropdown.disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
+/* ==================== GALLERY ==================== */
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    object-fit: contain;
+}
+
+.gallery-caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Results section */
+.results-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1f2937;
+    border-radius: 10px;
 }

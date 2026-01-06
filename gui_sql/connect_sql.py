@@ -11,11 +11,9 @@ load_dotenv()
 
 connector = Connector()
 GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-
-# Google Cloud SQL configuration
-INSTANCE_CONNECTION_NAME = "neurons-development:us-central1:nh-staging-db-instance" 
-DB_NAME = "assets-experiment" 
-IAM_USER = "i.white@neuronsinc.com"
+IAM_USER = os.getenv("IAM_USER")
+DB_NAME = os.getenv("DB_NAME")
+INSTANCE_CONNECTION_NAME = os.getenv("INSTANCE_CONNECTION_NAME")
 
 # Initialize the Google Cloud Storage client with ADC and connect
 credentials, project_id = default()

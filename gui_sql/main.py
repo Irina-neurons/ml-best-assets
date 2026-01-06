@@ -1,185 +1,303 @@
 import gradio as gr
 import os
 import atexit
-from api import run_selection, update_asset_type, cleanup_temp_dir, map_to_backend_values, get_dropdown_options
-from config import FILTERS_IMAGE, NO_ASSET_IMAGE, TEMP_DIR
+from api import (
+    load_all_combinations,
+    cleanup_temp_dir,
+)
+from functionality import (
+    on_industry_category_change,
+    on_industry_subcategory_change,
+    on_usecase_category_change,
+    on_usecase_subcategory_change,
+    on_platform_change,
+    on_context_change,
+    on_submit,
+    enable_after_type_selected,
+    enable_after_purpose_selected,
+    select_image,
+    select_video,
+    select_banners,
+    select_brand,
+    select_conversion,
+)
 
-# Load the environment variables
 from dotenv import load_dotenv
 load_dotenv()
-GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+
+# Load CSS
 css_file = "./style.css"
-
 try:
-    css = open(css_file).read()
-except:
-    css = "style.css"
+    with open(css_file) as f:
+        css = f.read()
+except FileNotFoundError:
+    css = ""
+    print(f"Warning: CSS file '{css_file}' not found.")
 
-dropdown_option1, dropdown_option2, dropdown_option3, dropdown_option4, dropdown_option5, dropdown_option6, dropdown_option7   = get_dropdown_options('Image')
+# Load combinations at startup
+load_all_combinations()
+
+# Register cleanup on exit
+atexit.register(cleanup_temp_dir)
+
 #################################################################################################################
 # Gradio App Layout
 
-with gr.Blocks(title="BEST ASSETS", theme='ParityError/Interstellar', css=css) as interface:
-    gr.HTML(
-        """
-        <div class="header">
-            Top 10 Neurons Assets
-        </div>
-        """
-    )
+with gr.Blocks(css=css) as demo:
+    gr.Markdown("# Asset Selection Tool")
     
+    # ==================== ASSET TYPE & PURPOSE ====================
     with gr.Row():
-        placeholder_asset = gr.Image(value=FILTERS_IMAGE, visible=True, interactive=False, label=".")
+        with gr.Column(scale=1):
+            gr.Markdown("### ASSET TYPE", elem_classes="section-title")
+            with gr.Row():
+                image_btn = gr.Button("Image", elem_classes="type-btn type-btn-unselected")
+                video_btn = gr.Button("Video", elem_classes="type-btn type-btn-unselected")
+                banners_btn = gr.Button("Banners", elem_classes="type-btn type-btn-unselected")
+            asset_type_state = gr.State(None)
+        
+        with gr.Column(scale=1):
+            gr.Markdown("### PURPOSE", elem_classes="section-title")
+            with gr.Row():
+                brand_btn = gr.Button("Brand Building", elem_classes="purpose-btn purpose-btn-unselected")
+                conversion_btn = gr.Button("Conversion", elem_classes="purpose-btn purpose-btn-unselected")
+            purpose_state = gr.State(None)
+
+    # ==================== INDUSTRY SECTION ====================
+    gr.Markdown("### INDUSTRY")
+    with gr.Row():
+        industry_category = gr.Dropdown(
+            choices=[],
+            label="Category",
+            value=None,
+            scale=1,
+            interactive=False
+        )
+        industry_subcategory = gr.Dropdown(
+            choices=[],
+            label="Subcategory",
+            value=None,
+            scale=1,
+            interactive=False
+        )
+
+    # ==================== USECASE SECTION ====================
+    gr.Markdown("### USECASE")
+    with gr.Row():
+        usecase_category = gr.Dropdown(
+            choices=[],
+            label="Category",
+            value=None,
+            scale=1,
+            interactive=False
+        )
+        usecase_subcategory = gr.Dropdown(
+            choices=[],
+            label="Subcategory",
+            value=None,
+            scale=1,
+            interactive=False
+        )
 
     with gr.Row():
-        asset_type_radio = gr.Radio(
-            choices=["Image", "Video"],
-            value="Image",
-            label="ASSET TYPE\n",
-            elem_classes="custom-radio",
-            show_label=False
+        platform = gr.Dropdown(
+            choices=[],
+            label="Platform",
+            value=None,
+            interactive=False,
+            scale=1
+        )
+        context = gr.Dropdown(
+            choices=[],
+            label="Context",
+            value=None,
+            scale=1,
+            interactive=False
+        )
+        device = gr.Dropdown(
+            choices=[],
+            label="Device",
+            value=None,
+            scale=1,
+            interactive=False
+        )
+
+    # ==================== SUBMIT ====================
+    gr.Markdown("---")
+    submit_button = gr.Button("SUBMIT", variant="primary", size="lg", interactive=False)
+    
+    # ==================== RESULTS SECTION ====================
+    with gr.Column(visible=False) as output_section:
+        gr.Markdown("### RESULTS")
+        results_info = gr.Textbox(label="Summary", interactive=False, lines=2)
+        
+        gr.Markdown("#### Top 10 Assets by NIS Score")
+        results_gallery = gr.Gallery(
+            label="Top Assets",
+            show_label=False,
+            columns=5,
+            rows=2,
+            height="auto",
+            object_fit="contain"
         )
         
-    with gr.Row(visible=True) as dropdown_section:
-        industry_category = gr.Dropdown(choices=dropdown_option1, label="INDUSTRY CATEGORY", value="All")
-        industry_subcategory = gr.Dropdown(choices=dropdown_option2, label="INDUSTRY SUBCATEGORY", value="All")
+        download_output = gr.File(label="Download All Results (ZIP)")
 
-    with gr.Row(visible=True) as additional_dropdown_section:
-        usecase_category = gr.Dropdown(choices=dropdown_option3, label="USECASE CATEGORY", value="All")
-        usecase_subcategory = gr.Dropdown(choices=dropdown_option4, label="USECASE SUBCATEGORY", value="All")
-        platform = gr.Dropdown(choices=dropdown_option5, label="PLATFORM", value="All")
-        device = gr.Dropdown(choices=dropdown_option6, label="DEVICE", value="All")
-        context = gr.Dropdown(choices=dropdown_option7, label="CONTEXT", value="No")
+    # ==================== DEFINE DROPDOWN LIST ====================
+    all_dropdowns = [
+        industry_category, 
+        industry_subcategory,
+        usecase_category, 
+        usecase_subcategory,
+        platform, 
+        context,
+        device,
+    ]
 
-    submit_button = gr.Button("SUBMIT", visible=True, elem_classes="button")
-    download_output = gr.File(label="DOWNLOAD IP FILE", visible=False)
-    
-    # Initial Output States
-    benchmark_state = gr.State()
-    metrics_state = gr.State()
-    
-    # Output: Two columns, one for images and one for metrics
-    no_asset_asset = gr.Image(value=NO_ASSET_IMAGE, visible=False, interactive=False, label="No Asset")
-
-    # Define the main output layout with rows for images and metrics
-    with gr.Column(visible=False) as output_section:
-        output_rows = []
-        for _ in range(10): 
-            with gr.Row():
-                with gr.Column(scale=20):
-                    output_rows.append(gr.Image(label="Image", interactive=False, visible=False))
-                    output_rows.append(gr.Video(label="Video", interactive=False, visible=False))  # For videos
-
-                with gr.Column(scale=3):
-                    with gr.Row():
-                        with gr.Column(scale=1):
-                            output_rows.append(gr.HTML(label="Rank", value="<p>Rank will appear here</p>"))
-                        with gr.Column(scale=3):
-                            output_rows.append(gr.HTML(label="Metric", value="<p>Metrics will appear here</p>"))
-    
-    asset_type_radio.change(
-        fn=update_asset_type,
-        inputs=[asset_type_radio],
-        outputs=[
-            placeholder_asset,
-            dropdown_section,
-            additional_dropdown_section,
-            industry_category,
-            industry_subcategory,
-            usecase_category,
-            usecase_subcategory,
-            platform,
-            device,
-            context,
-            submit_button,
-            no_asset_asset,
-            output_section,
-        ]
+    # ==================== WIRE UP ASSET TYPE BUTTONS ====================
+    image_btn.click(
+        select_image,
+        outputs=[asset_type_state, image_btn, video_btn, banners_btn]
+    ).then(
+        enable_after_type_selected,
+        inputs=[asset_type_state],
+        outputs=all_dropdowns + [submit_button]
     )
     
-    # Define the processing function
-    def process_inputs(v1, v2, v3, v4, v5, v6, v7, asset_type):
-        v1 = map_to_backend_values(v1)
-        v2 = map_to_backend_values(v2)
-        v3 = map_to_backend_values(v3)
-        v4 = map_to_backend_values(v4)
-        v5 = map_to_backend_values(v5)
-        v6 = map_to_backend_values(v6)
-        v7 = map_to_backend_values(v7)
-        #df_benchmark, df_metrics = get_asset_data(asset_type)
-        result = run_selection(v1, v2, v3, v4, v5, v6, v7, asset_type)
-
-        if not result or not result[0]:  # No assets found
-            placeholder_update = gr.update(visible=False)
-            no_asset_update = gr.update(visible=True)
-            output_section_update = gr.update(visible=False)  # Keep output section hidden
-            output_updates = [gr.update(visible=False)] * len(output_rows)  # Hide all output rows
-            download_update = gr.update(visible=False)
-            return [placeholder_update, no_asset_update, output_section_update, download_update] + output_updates
-
-        else:
-            zip_file_path, asset_paths, metrics, ranks = result
-
-            # Ensure there are exactly 6 results (pad if necessary)
-            max_rows = len(output_rows) // 4  # Each row has 4 components
-            asset_paths = (asset_paths + [""])[:max_rows]
-            metrics = (metrics + ["<p>No metrics available</p>"])[:max_rows]
-            ranks = (ranks + ["<p>No rank available</p>"])[:max_rows]
-
-            # Generate interleaved outputs
-            interleaved_outputs = []
-            for asset, rank, metric in zip(asset_paths, ranks, metrics):
-                # Add styling for rank
-                rank_html = (
-                    f"<div style='text-align: center; vertical-align: middle; "
-                    f"font-size: 38px; font-weight: bold; color: green'>RANK: {rank}</div>"
-                )
-                
-                # Add styling for metrics
-                metric_html = (
-                    f"<div style='text-align: center; vertical-align: middle; "
-                    f"font-size: 18px; color: white'>{'<br>'.join(metric.split())}</div>"
-                )
-
-                if asset_type == "Image":
-                    interleaved_outputs.append(gr.update(value=asset, visible=True))  # Show image
-                    interleaved_outputs.append(gr.update(visible=False))  # Hide video
-                elif asset_type == "Video":
-                    interleaved_outputs.append(gr.update(visible=False))  # Hide image
-                    interleaved_outputs.append(gr.update(value=asset, visible=True))  # Show video
-                
-                interleaved_outputs.append(gr.update(value=rank_html, visible=True))
-                interleaved_outputs.append(gr.update(value=metric_html, visible=True))
-
-            # Pad interleaved outputs to match `output_rows` count
-            while len(interleaved_outputs) < len(output_rows):
-                interleaved_outputs.append(gr.update(visible=False))
-
-            placeholder_update = gr.update(visible=False)
-            no_asset_update = gr.update(visible=False)
-            output_section_update = gr.update(visible=True)
-            download_update = gr.update(value=zip_file_path, visible=True)
-
-            return [placeholder_update, no_asset_update, output_section_update,download_update] + interleaved_outputs
-
-        
+    video_btn.click(
+        select_video,
+        outputs=[asset_type_state, image_btn, video_btn, banners_btn]
+    ).then(
+        enable_after_type_selected,
+        inputs=[asset_type_state],
+        outputs=all_dropdowns + [submit_button]
+    )
     
-    # Button Click Event
-    submit_button.click(
-        fn=process_inputs,
+    banners_btn.click(
+        select_banners,
+        outputs=[asset_type_state, image_btn, video_btn, banners_btn]
+    ).then(
+        enable_after_type_selected,
+        inputs=[asset_type_state],
+        outputs=all_dropdowns + [submit_button]
+    )
+
+    # ==================== WIRE UP PURPOSE BUTTONS ====================
+    brand_btn.click(
+        select_brand, 
+        outputs=[purpose_state, brand_btn, conversion_btn]
+    ).then(
+        enable_after_purpose_selected,
+        inputs=[asset_type_state, purpose_state],
+        outputs=all_dropdowns + [submit_button]
+    )
+    
+    conversion_btn.click(
+        select_conversion, 
+        outputs=[purpose_state, brand_btn, conversion_btn]
+    ).then(
+        enable_after_purpose_selected,
+        inputs=[asset_type_state, purpose_state],
+        outputs=all_dropdowns + [submit_button]
+    )
+
+    # ==================== WIRE UP DROPDOWN CHANGES ====================
+    
+    # Industry category -> Industry subcategory
+    industry_category.change(
+        on_industry_category_change,
+        inputs=[asset_type_state, industry_category],
+        outputs=[industry_subcategory]
+    )
+
+    # Industry subcategory -> Usecase category, subcategory, platform, context, device
+    industry_subcategory.change(
+        on_industry_subcategory_change,
+        inputs=[asset_type_state, industry_category, industry_subcategory],
+        outputs=[usecase_category, usecase_subcategory, platform, context, device]
+    )
+
+    # Usecase category -> Usecase subcategory, platform, context, device
+    usecase_category.change(
+        on_usecase_category_change,
+        inputs=[asset_type_state, industry_category, industry_subcategory, usecase_category],
+        outputs=[usecase_subcategory, platform, context, device]
+    )
+
+    # Usecase subcategory -> Platform, context, device
+    usecase_subcategory.change(
+        on_usecase_subcategory_change,
         inputs=[
-            industry_category, industry_subcategory, 
-            usecase_category, usecase_subcategory, 
-            platform, device, context, asset_type_radio
+            asset_type_state, 
+            industry_category, 
+            industry_subcategory, 
+            usecase_category, 
+            usecase_subcategory
         ],
-        outputs=[placeholder_asset, no_asset_asset, output_section, download_output] + output_rows
+        outputs=[platform, context, device]
     )
 
+    # Platform -> Context, device
+    platform.change(
+        on_platform_change,
+        inputs=[
+            asset_type_state, 
+            industry_category, 
+            industry_subcategory,
+            usecase_category, 
+            usecase_subcategory, 
+            platform
+        ],
+        outputs=[context]  # Only context!
+    )
 
+    # Context -> Device + Submit
+    context.change(
+        on_context_change,
+        inputs=[
+            asset_type_state, 
+            industry_category, 
+            industry_subcategory,
+            usecase_category, 
+            usecase_subcategory, 
+            platform,
+            context
+        ],
+        outputs=[device, submit_button]  # Device + Submit
+    )
 
-############################################################################
-# Register cleanup function
-atexit.register(cleanup_temp_dir)
+    # ==================== SUBMIT HANDLER ====================
+    submit_button.click(
+        on_submit,
+        inputs=[
+            industry_category, 
+            industry_subcategory,
+            usecase_category, 
+            usecase_subcategory,
+            platform, 
+            context,
+            device,
+            asset_type_state, 
+            purpose_state
+        ],
+        outputs=[output_section, results_gallery, results_info, download_output]
+    )
 
-# Launch the app
-interface.launch(server_name="0.0.0.0", server_port=int(os.getenv("PORT", 8080)))
+#################################################################################################################
+# Run the app
+
+#LOCAL TESTING
+# if __name__ == "__main__":
+#     demo.launch(
+#         server_name="0.0.0.0", 
+#         server_port=int(os.getenv("PORT", 8080)),
+#     )
+
+# DEPLOYMENT
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", "8080"))
+    demo.queue().launch(
+    server_name="0.0.0.0",
+    server_port=port,
+    share=False,
+)
