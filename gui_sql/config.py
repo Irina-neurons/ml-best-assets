@@ -44,5 +44,5 @@ COLUMNS = [
 COMBINATIONS = {
     "Image": None,
     "Video": None,
-    "Banners": None,
+    "MixedMedia": None,
 }

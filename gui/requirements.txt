@@ -1,7 +1,0 @@
-gradio
-python-dotenv
-tqdm
-pandas
-gcsfs
-google-cloud-storage
-numpy

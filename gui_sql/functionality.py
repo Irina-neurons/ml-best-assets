@@ -31,11 +31,11 @@ def select_video():
         gr.update(elem_classes="type-btn type-btn-unselected")
     )
 
-def select_banners():
-    """Select Banners button."""
-    print("SELECT_BANNERS clicked")
+def select_mixedmedia():
+    """Select MixedMedia button."""
+    print("SELECT_MIXEDMEDIA clicked")
     return (
-        "Banners",
+        "MixedMedia",
         gr.update(elem_classes="type-btn type-btn-unselected"),
         gr.update(elem_classes="type-btn type-btn-unselected"),
         gr.update(elem_classes="type-btn type-btn-selected")

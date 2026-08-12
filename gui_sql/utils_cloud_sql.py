@@ -62,7 +62,7 @@ def query_metrics_table(engine, asset_type: str, **filters) -> pd.DataFrame:
     
     # Filter by asset_type
     asset_type_value = asset_type.lower()
-    if asset_type_value == "banners":
+    if asset_type_value == "mixedmedia":
         asset_type_value = "animated_banner"
     
     where_clauses.append("asset_type = :asset_type")

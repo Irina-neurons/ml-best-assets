@@ -92,7 +92,7 @@ def get_thresholds_df(engine, asset_type, get_filters):
             AND usecase_subcategory LIKE :usecase_subcategory
             AND platform LIKE :platform
             AND device LIKE :device
-            AND context LIKE :context
+            AND is_context LIKE :is_context
             
             AND ({metrics_clause})
             AND time LIKE :time
@@ -100,7 +100,7 @@ def get_thresholds_df(engine, asset_type, get_filters):
         
         thresholds AS (
         -- Cognitive Demand Max and Min
-        SELECT industry_category, industry_subcategory, usecase_category, usecase_subcategory, platform, device, context,
+        SELECT industry_category, industry_subcategory, usecase_category, usecase_subcategory, platform, device, is_context,
             CASE
                 WHEN type = 'high' THEN 'cognitive_demand_max'
                 WHEN type = 'low' THEN 'cognitive_demand_min'
@@ -115,7 +115,7 @@ def get_thresholds_df(engine, asset_type, get_filters):
         UNION ALL
 
         -- Other Metrics Thresholds
-        SELECT industry_category, industry_subcategory, usecase_category, usecase_subcategory, platform, device, context,
+        SELECT industry_category, industry_subcategory, usecase_category, usecase_subcategory, platform, device, is_context,
             metric,
             lower AS threshold
             
@@ -135,39 +135,31 @@ def get_thresholds_df(engine, asset_type, get_filters):
 
 
 
-def query_metrics_table(engine, asset_type, **filters):
+def query_metrics_table(engine, asset_type, purpose, **filters):
     """
-    Query the metrics table based on the dinamically provided filters.
-    When filter is ALL it will return all the values.
+    Query the NIS metrics table of the given asset type and purpose based on the
+    dinamically provided filters. When filter is ALL it will return all the values.
     """
-    asset_type = asset_type.lower()
-    table_name = f"{asset_type}_nvai_metrics"
-    metrics = filters.pop("metric")
-    metrics_clause = " OR ".join([f"metric LIKE '{m}'" for m in metrics])
-    
+    table_name = f"{asset_type.lower()}_nis_{purpose.lower()}"
+
     where_clauses = []
     sql_params = {}
-    
+
     for key, value in filters.items():
         if value.lower() != "all":
             where_clauses.append(f"{key} LIKE :{key}")
             sql_params[key] = value
-    
-    # Always apply the metrics and time filters
-    where_clauses.append(f"({metrics_clause})")
-    where_clauses.append("time LIKE :time")
-    sql_params['time'] = filters.get('time', 'all')  # Default to 'all' if time isn't passed
-    
-    where_clause = " AND ".join(where_clauses)
-    
+
+    where_clause = " AND ".join(where_clauses) if where_clauses else "TRUE"
+
     query_metrics = text(f"""
         SELECT *
         FROM {table_name}
         WHERE {where_clause}
     """)
-    
+
     with engine.connect() as conn:
-        metrics_df = pd.read_sql(query_metrics, conn, params=filters)
+        metrics_df = pd.read_sql(query_metrics, conn, params=sql_params)
     return metrics_df
 
 
@@ -176,52 +168,23 @@ def update_create_table(engine, table_name, csv_file_path, primary_key_columns):
     """
     Update or create a table in the SQL database based on a CSV file.
     """
-    df = pd.read_csv(csv_file_path)
-    last_part = csv_file_path.split("/")[-1]
-    last_part = last_part.split(".")[0]
-    missing_file_name = f"{last_part}_missing_rows.csv"
-    
-    # Access the underlying connection directly for pg8000
-    with engine.connect() as conn:
-        raw_conn = conn.connection  
-        try:
-            cursor = raw_conn.cursor()
-            
-            # Check if the table exists and create it if it doesn't
-            inspector = sqlalchemy.inspect(engine)
-            tables = inspector.get_table_names()
-            if table_name not in tables:
-                print(f"Table {table_name} does not exist.")
-                metadata = MetaData()
-                create_table_metadata(table_name, metadata, df, primary_key_columns)
-                metadata.create_all(engine) 
-            else:
-                print(f"Table {table_name} already exists")
+    df = pd.read_csv(csv_file_path).drop_duplicates()
 
-            # Fetch existing rows from the database
-            query = f"""
-            SELECT {', '.join(primary_key_columns)}
-            FROM {table_name};
-            """
-            cursor.execute(query)
-            existing_keys = {tuple(row) for row in cursor.fetchall()}
+    if table_name not in sqlalchemy.inspect(engine).get_table_names():
+        print(f"Table {table_name} does not exist, creating it")
+        metadata = MetaData()
+        create_table_metadata(table_name, metadata, df, primary_key_columns)
+        metadata.create_all(engine)
+        df_missing = df
+    else:
+        print(f"Table {table_name} already exists")
+        with engine.connect() as conn:
+            existing = pd.read_sql(text(f"SELECT {', '.join(primary_key_columns)} FROM {table_name}"), conn)
+        existing_keys = set(map(tuple, existing.astype(str).values))
+        composite_key = df[primary_key_columns].astype(str).apply(tuple, axis=1)
+        df_missing = df[~composite_key.isin(existing_keys)]
 
-            # Load CSV into a DataFrame and filter missing rows
-            df["composite_key"] = df[primary_key_columns].apply(tuple, axis=1)
-            df_missing = df[~df["composite_key"].isin(existing_keys)]
-            df_missing = df_missing.drop(columns=["composite_key"])  # Drop helper column
-            print(f"Number of missing rows to add: {len(df_missing)}")
-
-            if len(df_missing) > 0:
-                df_missing.to_csv('missing_data/'+ missing_file_name, index=False)
-            else:
-                print("No new rows to add.")
-
-        except Exception as e:
-            print(f"Error: {e}")
-        finally:
-            #inspector = sqlalchemy.inspect(engine)
-            #tables = inspector.get_table_names()
-            #print("Tables in the database:", tables)
-            cursor.close()
-            raw_conn.close()
+    print(f"Number of missing rows to add: {len(df_missing)}")
+    if len(df_missing) > 0:
+        df_missing.to_sql(name=table_name, con=engine, if_exists="append", index=False,
+                          method="multi", chunksize=30000 // len(df.columns))

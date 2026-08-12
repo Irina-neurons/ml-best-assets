@@ -23,9 +23,9 @@ def load_all_combinations():
     global COMBINATIONS
     COMBINATIONS["Image"] = pd.read_csv(BASE_PATH_OBJ / "valid_image_objectives.csv")
     COMBINATIONS["Video"] = pd.read_csv(BASE_PATH_OBJ / "valid_video_objectives.csv")
-    COMBINATIONS["Banners"] = pd.read_csv(BASE_PATH_OBJ / "valid_ab_objectives.csv")
-    if COMBINATIONS["Image"] is not None and COMBINATIONS["Video"] is not None and COMBINATIONS["Banners"] is not None:
-        print("Loaded combination files for Image, Video, and Banners.")
+    COMBINATIONS["MixedMedia"] = pd.read_csv(BASE_PATH_OBJ / "valid_mm_objectives.csv")
+    if COMBINATIONS["Image"] is not None and COMBINATIONS["Video"] is not None and COMBINATIONS["MixedMedia"] is not None:
+        print("Loaded combination files for Image, Video, and MixedMedia.")
 
 def get_combinations_df(media_type: str) -> pd.DataFrame:
     """Get combinations DataFrame for a media type."""
@@ -108,7 +108,7 @@ def get_filtered_options(media_type: str, column: str, **current_selections) -> 
     Get valid options for a column based on current selections.
     
     Args:
-        media_type: Image, Video, or Banners
+        media_type: Image, Video, MixedMedia
         column: The column to get options for
         **current_selections: Current dropdown values (display names)
     

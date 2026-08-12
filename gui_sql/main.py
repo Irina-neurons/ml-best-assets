@@ -17,7 +17,7 @@ from functionality import (
     enable_after_purpose_selected,
     select_image,
     select_video,
-    select_banners,
+    select_mixedmedia,
     select_brand,
     select_conversion,
 )
@@ -53,7 +53,7 @@ with gr.Blocks(css=css) as demo:
             with gr.Row():
                 image_btn = gr.Button("Image", elem_classes="type-btn type-btn-unselected")
                 video_btn = gr.Button("Video", elem_classes="type-btn type-btn-unselected")
-                banners_btn = gr.Button("Banners", elem_classes="type-btn type-btn-unselected")
+                mixedmedia_btn = gr.Button("MixedMedia", elem_classes="type-btn type-btn-unselected")
             asset_type_state = gr.State(None)
         
         with gr.Column(scale=1):
@@ -157,7 +157,7 @@ with gr.Blocks(css=css) as demo:
     # ==================== WIRE UP ASSET TYPE BUTTONS ====================
     image_btn.click(
         select_image,
-        outputs=[asset_type_state, image_btn, video_btn, banners_btn]
+        outputs=[asset_type_state, image_btn, video_btn, mixedmedia_btn]
     ).then(
         enable_after_type_selected,
         inputs=[asset_type_state],
@@ -166,16 +166,16 @@ with gr.Blocks(css=css) as demo:
     
     video_btn.click(
         select_video,
-        outputs=[asset_type_state, image_btn, video_btn, banners_btn]
+        outputs=[asset_type_state, image_btn, video_btn, mixedmedia_btn]
     ).then(
         enable_after_type_selected,
         inputs=[asset_type_state],
         outputs=all_dropdowns + [submit_button]
     )
     
-    banners_btn.click(
-        select_banners,
-        outputs=[asset_type_state, image_btn, video_btn, banners_btn]
+    mixedmedia_btn.click(
+        select_mixedmedia,
+        outputs=[asset_type_state, image_btn, video_btn, mixedmedia_btn]
     ).then(
         enable_after_type_selected,
         inputs=[asset_type_state],

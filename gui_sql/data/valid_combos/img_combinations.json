@@ -1,0 +1,2630 @@
+[
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "products",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "products",
+        "usecase_subcategory": "packaging",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "all",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "display_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "facebook",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "instagram",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "some_ads",
+        "platform": "linkedin",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "hero_banners",
+        "platform": "not_applicable",
+        "device": "mobile",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "print_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "yes"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "traditional_advertising",
+        "usecase_subcategory": "out_of_home_ads",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "no"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "brand_pages",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "websites",
+        "usecase_subcategory": "e_commerce",
+        "platform": "not_applicable",
+        "device": "desktop",
+        "is_context": "not_applicable"
+    }
+]

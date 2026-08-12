@@ -1,0 +1,461 @@
+[
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "all",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "automotive",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "durable_goods",
+        "industry_subcategory": "consumer_electronics",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "entertainment_media",
+        "industry_subcategory": "sports_gaming",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "food_beverage",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "fashion_accessories",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "household_products",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "fast_moving_consumer_goods",
+        "industry_subcategory": "personal_care_beauty",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "health",
+        "industry_subcategory": "pharma",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "all",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "financial_insurance_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "internet_telecommunication_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "all",
+        "platform": "not_applicable",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "all",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    },
+    {
+        "industry_category": "services",
+        "industry_subcategory": "travel_hospitality_services",
+        "usecase_category": "digital_advertising",
+        "usecase_subcategory": "ctv",
+        "platform": "vdx",
+        "device": "not_applicable",
+        "is_context": "not_applicable"
+    }
+]

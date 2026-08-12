@@ -1,7 +1,7 @@
-GOOGLE_CLOUD_PROJECT: "{{ gcp_project }}"
-#BASE_URL: "https://best-assets-sql-gradio-{{ gcp_region }}.run.app"
-GOOGLE_APPLICATION_CREDENTIALS: "/app/credentials.json"
+GOOGLE_CLOUD_PROJECT: "neurons-development"
+#BASE_URL: "https://best-assets-sql-gradio-us-central1.run.app"
 INSTANCE_CONNECTION_NAME: "neurons-development:us-central1:nh-staging-db-instance"
 DB_NAME: "assets-experiment"
-IAM_USER: "i.white@neuronsinc.com"
-
+# Postgres IAM username for the Cloud Run runtime service account.
+# Cloud SQL derives it by stripping the ".gserviceaccount.com" suffix.
+IAM_USER: "best-assets-gradio@neurons-development.iam"
