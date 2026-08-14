@@ -49,41 +49,43 @@ def get_connection():
 
 # Function to query the database
 
-def query_metrics_table(engine, asset_type: str, **filters) -> pd.DataFrame:
+ASSET_TYPE_PREFIX = {"image": "image", "video": "video", "mixedmedia": "mm"}
+
+
+def get_table_name(asset_type: str, purpose: str) -> str:
+    """Table holding the assets of this type and purpose, e.g. MixedMedia + conversion -> mm_nis_conversion."""
+    prefix = ASSET_TYPE_PREFIX[asset_type.strip().lower()]
+    return f"public.{prefix}_nis_{purpose.strip().lower()}"
+
+
+def query_metrics_table(engine, asset_type: str, purpose: str, **filters) -> pd.DataFrame:
     """
-    Query mastertable_purpose_nis based on dropdown selections.
-    Returns top 50 results sorted by NIS descending.
+    Query the {type}_nis_{purpose} table based on dropdown selections.
+    Joins asset_paths for the GCS path. Returns all matching rows sorted by NIS descending.
     """
-    table_name = "public.mastertable_purpose_nis"
-    
-    # Build WHERE clauses
+    table_name = get_table_name(asset_type, purpose)
+
+    # Build WHERE clauses - skip if None, empty, "all", or placeholder
     where_clauses = []
     sql_params = {}
-    
-    # Filter by asset_type
-    asset_type_value = asset_type.lower()
-    if asset_type_value == "mixedmedia":
-        asset_type_value = "animated_banner"
-    
-    where_clauses.append("asset_type = :asset_type")
-    sql_params["asset_type"] = asset_type_value
-    
-    # Add filters - skip if None, empty, "all", or placeholder
+
     for column, value in filters.items():
         if value is None or value == "" or value == "all" or value == "-- Select --":
             continue
-        
-        where_clauses.append(f"{column} = :{column}")
+
+        where_clauses.append(f"m.{column} = :{column}")
         sql_params[column] = value
-    
-    where_clause = " AND ".join(where_clauses)
-    
+
+    where_clause = " AND ".join(where_clauses) if where_clauses else "TRUE"
+
     # Quote "NIS" to preserve case
     query = text(f"""
-        SELECT *
-        FROM {table_name}
+        SELECT m.*, p.path_bucket
+        FROM {table_name} m
+        LEFT JOIN public.asset_paths p USING (asset_id)
         WHERE {where_clause}
-        ORDER BY "NIS" DESC
+        ORDER BY m."NIS" DESC
+        LIMIT 2000
     """)
     
     print(f"SQL Query: {query}")

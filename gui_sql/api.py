@@ -1,3 +1,4 @@
+import ast
 import os
 import shutil
 import zipfile
@@ -5,7 +6,7 @@ import pandas as pd
 import sqlalchemy
 from typing import List
 from utils_cloud_sql import gcs_to_file, query_metrics_table, get_connection
-from config import TEMP_DIR, BASE_PATH_OBJ, COMBINATIONS
+from config import TEMP_DIR, BASE_PATH_OBJ, COMBINATIONS, NON_METRIC_COLUMNS
 
 
 os.makedirs(TEMP_DIR, exist_ok=True)
@@ -74,24 +75,25 @@ def get_unique_values(df: pd.DataFrame, column: str, sort_all_first: bool = True
 def filter_combinations(df: pd.DataFrame, **filters) -> pd.DataFrame:
     """
     Filter combinations DataFrame based on provided filters.
-    When a filter value is "all", only match rows where the column is literally "all".
+    "All" is a wildcard: the column is not filtered, so every option downstream stays available.
+    This is the same meaning "all" has in the SQL query.
     """
     filtered_df = df.copy()
-    
+
     for column, value in filters.items():
         if value is not None:
             # Convert display name to backend value
             backend_value = value.lower().replace(" ", "_") if isinstance(value, str) else value
-            
+
             if backend_value == "all":
-                # "All" means literally "all" in the column - not a wildcard
-                filtered_df = filtered_df[filtered_df[column] == "all"]
-            else:
-                # For other values, match the value OR match "all" (wildcard)
-                filtered_df = filtered_df[
-                    (filtered_df[column] == backend_value) | (filtered_df[column] == "all")
-                ]
-    
+                # "All" means "do not filter on this column"
+                continue
+
+            # For other values, match the value OR match "all" (wildcard row)
+            filtered_df = filtered_df[
+                (filtered_df[column] == backend_value) | (filtered_df[column] == "all")
+            ]
+
     return filtered_df
 
 
@@ -154,71 +156,128 @@ def return_top(filtered_df: pd.DataFrame) -> pd.DataFrame:
     return top_df
 
 
-def run_selection(industry_cat: str, industry_subcat: str, 
+#################### METRICS PANEL ####################
+
+NO_SELECTION_TEXT = "_Select an asset to see its metrics._"
+
+
+def parse_metric_tuple(value) -> List[str]:
+    """prioritized_metrics / metrics_used_usecase are stored as stringified tuples."""
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return []
+    try:
+        parsed = ast.literal_eval(str(value))
+    except (ValueError, SyntaxError):
+        return []
+    return [str(parsed)] if isinstance(parsed, str) else [str(v) for v in parsed]
+
+
+def get_metric_columns(row: pd.Series) -> List[str]:
+    """Non-null metric columns of this row - the metric set differs per table."""
+    return [
+        col for col in row.index
+        if col not in NON_METRIC_COLUMNS
+        and not col.startswith("impact_")
+        and pd.notna(row[col])
+    ]
+
+
+def metrics_markdown_for_index(top_df, index: int) -> str:
+    """Metrics of the asset at this gallery position, as markdown for the side panel."""
+    if top_df is None or len(top_df) == 0:
+        return NO_SELECTION_TEXT
+    if index is None or index < 0 or index >= len(top_df):
+        return NO_SELECTION_TEXT
+
+    row = top_df.iloc[index]
+    used = set(parse_metric_tuple(row.get("metrics_used_usecase")))
+
+    segment = " · ".join(format_display_name(row.get(col)) for col in
+                         ["industry_subcategory", "usecase_subcategory", "platform", "device"])
+
+    lines = [
+        f"### Rank #{row['rank']} — NIS {row['NIS']:.2f}",
+        f"`{row['asset_id']}`",
+        "",
+        segment,
+        "",
+        "| Metric | Value | Impact |",
+        "|---|---:|---:|",
+    ]
+
+    for col in get_metric_columns(row):
+        name = format_display_name(col)
+        if col in used:
+            name = f"**{name}** ⭐"
+
+        impact = row.get(f"impact_{col}")
+        impact_text = f"{impact:.2f}" if pd.notna(impact) else "–"
+        lines.append(f"| {name} | {row[col]:.2f} | {impact_text} |")
+
+    lines += ["", "⭐ used for this use case"]
+    return "\n".join(lines)
+
+
+def run_selection(industry_cat: str, industry_subcat: str,
                   usecase_cat: str, usecase_subcat: str,
-                  platform: str, device: str, context: str,
+                  platform: str, device: str,
                   asset_type: str, asset_purpose: str):
     """Main function to run the selection and return results."""
-    
+
+    # Only the columns that exist in the *_nis_* tables - type and purpose are the table name,
+    # and context only exists on the benchmark side (is_context)
     filters = {
-        "purpose": unformat_display_name(asset_purpose) if asset_purpose else None,
         "industry_category": unformat_display_name(industry_cat),
         "industry_subcategory": unformat_display_name(industry_subcat),
         "usecase_category": unformat_display_name(usecase_cat),
         "usecase_subcategory": unformat_display_name(usecase_subcat),
         "platform": unformat_display_name(platform),
         "device": unformat_display_name(device),
-        "context": unformat_display_name(context),
     }
-    
+
     # Remove None values and placeholder
     filters = {k: v for k, v in filters.items() if v is not None and v != "-- select --"}
-    
+
     print(f"Filters: {filters}")
-    
-    df = query_metrics_table(engine, asset_type, **filters)
+
+    df = query_metrics_table(engine, asset_type, asset_purpose, **filters)
 
     if df is None or df.empty:
         print("No results found")
-        return None, [], [], []
-    
+        return None, [], [], [], None
+
     print(f"Columns in result: {df.columns.tolist()}")
-    
+
     top_df = return_top(df)
-    
-    # Get NIS scores
-    if 'NIS' in top_df.columns:
-        nis_scores = top_df['NIS'].tolist()
-    elif 'nis' in top_df.columns:
-        nis_scores = top_df['nis'].tolist()
-    else:
-        nis_scores = [0] * len(top_df)
-    
-    # Check if path_bucket column exists
-    if 'path_bucket' in top_df.columns:
-        top_df['ext'] = top_df['path_bucket'].apply(lambda x: x.split('.')[-1] if pd.notna(x) else 'png')
-        top_df['local_path'] = top_df.apply(
-            lambda x: os.path.join(TEMP_DIR, f"{x['asset_id']}.{x['ext']}"), 
-            axis=1
-        )
-        
-        # Download files from GCS
-        for _, row in top_df.iterrows():
-            try:
-                gcs_to_file(row['path_bucket'], row['local_path'])
-            except Exception as e:
-                print(f"Error downloading {row['path_bucket']}: {e}")
-        
-        local_paths = top_df['local_path'].tolist()
-        zip_file_path = create_zip_file(local_paths)
-    else:
-        print("Warning: 'path_bucket' column not found.")
-        local_paths = []
-        zip_file_path = None
-    
-    ranks = top_df['rank'].tolist()
-    
-    return zip_file_path, local_paths, nis_scores, ranks
+
+    # Download the assets, dropping the ones without a usable path
+    local_paths, keep = [], []
+    for idx, row in top_df.iterrows():
+        gcs_path = row['path_bucket']
+        if pd.isna(gcs_path):
+            print(f"No path for asset {row['asset_id']}")
+            continue
+
+        local_path = os.path.join(TEMP_DIR, f"{row['asset_id']}.{gcs_path.rsplit('.', 1)[-1]}")
+        try:
+            gcs_to_file(gcs_path, local_path)
+        except Exception as e:
+            print(f"Error downloading {gcs_path}: {e}")
+            if os.path.exists(local_path):
+                os.remove(local_path)
+            continue
+
+        keep.append(idx)
+        local_paths.append(local_path)
+
+    # Reset the index so the gallery position matches the row the panel reads
+    top_df = top_df.loc[keep].reset_index(drop=True)
+    top_df['local_path'] = local_paths
+
+    nis_scores = top_df['NIS'].tolist() if 'NIS' in top_df.columns else [0] * len(top_df)
+    zip_file_path = create_zip_file(local_paths) if local_paths else None
+
+    return zip_file_path, local_paths, nis_scores, top_df['rank'].tolist(), top_df
    
 
 

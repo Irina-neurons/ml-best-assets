@@ -19,7 +19,7 @@ GCS_CLIENT = storage.Client(credentials=credentials, project=project_id)
 # CONSTANTS
 # File paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_PATH_OBJ = Path(__file__).parent / "data"
+BASE_PATH_OBJ = Path(__file__).parent / "data" / "valid_combos"
 TEMP_DIR = os.path.join(BASE_DIR, "data/temp")
 FILTERS_IMAGE = os.path.join(BASE_DIR, "data/filters.png")
 NO_ASSET_IMAGE = os.path.join(BASE_DIR, "data/no_asset.png")
@@ -45,4 +45,26 @@ COMBINATIONS = {
     "Image": None,
     "Video": None,
     "MixedMedia": None,
+}
+
+# Columns of the *_nis_* tables that are not metrics - everything else is a metric
+NON_METRIC_COLUMNS = {
+    "asset_id",
+    "asset_type",
+    "purpose",
+    "prioritized_metrics",
+    "metrics_used_usecase",
+    "NIS",
+    "NIS_original",
+    "industry_category",
+    "industry_subcategory",
+    "usecase_category",
+    "usecase_subcategory",
+    "platform",
+    "device",
+    "path_bucket",
+    "rank",
+    "which_metric",
+    "ext",
+    "local_path",
 }

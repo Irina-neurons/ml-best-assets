@@ -1,4 +1,4 @@
-gradio==6.2.0
+gradio==6.1.0
 huggingface-hub>=0.33.5,<2.0
 python-dotenv
 tqdm

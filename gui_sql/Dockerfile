@@ -17,9 +17,12 @@ COPY . /app
 # Install required system libraries (if still needed)
 RUN apt-get update && apt-get install -y libgomp1 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# No credentials are baked into the image. On Cloud Run, Application Default
-# Credentials resolve to the runtime service account via the metadata server,
-# which mints short-lived tokens and never needs interactive reauthentication.
+# Decode and set up Google credentials. The app connects to Cloud SQL with IAM
+# auth as the identity in this credential, which must match IAM_USER in
+# .deploy/env_vars.yaml.
+ARG GOOGLE_APPLICATION_CREDENTIALS_B64
+RUN echo "$GOOGLE_APPLICATION_CREDENTIALS_B64" | base64 -d > /app/credentials.json
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/credentials.json"
 
 # Expose Gradio's default port
 EXPOSE 8080

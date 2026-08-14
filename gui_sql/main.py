@@ -11,8 +11,13 @@ from functionality import (
     on_usecase_category_change,
     on_usecase_subcategory_change,
     on_platform_change,
+    on_device_change,
     on_context_change,
     on_submit,
+    start_submit,
+    finish_submit,
+    on_gallery_select,
+    NO_SELECTION_TEXT,
     enable_after_type_selected,
     enable_after_purpose_selected,
     select_image,
@@ -107,16 +112,16 @@ with gr.Blocks(css=css) as demo:
             interactive=False,
             scale=1
         )
-        context = gr.Dropdown(
+        device = gr.Dropdown(
             choices=[],
-            label="Context",
+            label="Device",
             value=None,
             scale=1,
             interactive=False
         )
-        device = gr.Dropdown(
+        context = gr.Dropdown(
             choices=[],
-            label="Device",
+            label="Context",
             value=None,
             scale=1,
             interactive=False
@@ -132,26 +137,33 @@ with gr.Blocks(css=css) as demo:
         results_info = gr.Textbox(label="Summary", interactive=False, lines=2)
         
         gr.Markdown("#### Top 10 Assets by NIS Score")
-        results_gallery = gr.Gallery(
-            label="Top Assets",
-            show_label=False,
-            columns=5,
-            rows=2,
-            height="auto",
-            object_fit="contain"
-        )
-        
+        top_results_state = gr.State(None)
+        with gr.Row():
+            with gr.Column(scale=3):
+                results_gallery = gr.Gallery(
+                    label="Top Assets",
+                    show_label=False,
+                    columns=2,
+                    rows=5,
+                    height="auto",
+                    object_fit="contain",
+                    allow_preview=False,  # click selects the asset instead of opening the preview
+                    elem_classes="top-gallery",
+                )
+            with gr.Column(scale=2):
+                metrics_panel = gr.Markdown(NO_SELECTION_TEXT, elem_classes="metrics-panel")
+
         download_output = gr.File(label="Download All Results (ZIP)")
 
     # ==================== DEFINE DROPDOWN LIST ====================
     all_dropdowns = [
-        industry_category, 
+        industry_category,
         industry_subcategory,
-        usecase_category, 
+        usecase_category,
         usecase_subcategory,
-        platform, 
-        context,
+        platform,
         device,
+        context,
     ]
 
     # ==================== WIRE UP ASSET TYPE BUTTONS ====================
@@ -210,77 +222,99 @@ with gr.Blocks(css=css) as demo:
         outputs=[industry_subcategory]
     )
 
-    # Industry subcategory -> Usecase category, subcategory, platform, context, device
+    # Industry subcategory -> Usecase category, subcategory, platform, device, context
     industry_subcategory.change(
         on_industry_subcategory_change,
         inputs=[asset_type_state, industry_category, industry_subcategory],
-        outputs=[usecase_category, usecase_subcategory, platform, context, device]
+        outputs=[usecase_category, usecase_subcategory, platform, device, context]
     )
 
-    # Usecase category -> Usecase subcategory, platform, context, device
+    # Usecase category -> Usecase subcategory, platform, device, context
     usecase_category.change(
         on_usecase_category_change,
         inputs=[asset_type_state, industry_category, industry_subcategory, usecase_category],
-        outputs=[usecase_subcategory, platform, context, device]
+        outputs=[usecase_subcategory, platform, device, context]
     )
 
-    # Usecase subcategory -> Platform, context, device
+    # Usecase subcategory -> Platform, device, context
     usecase_subcategory.change(
         on_usecase_subcategory_change,
         inputs=[
-            asset_type_state, 
-            industry_category, 
-            industry_subcategory, 
-            usecase_category, 
+            asset_type_state,
+            industry_category,
+            industry_subcategory,
+            usecase_category,
             usecase_subcategory
         ],
-        outputs=[platform, context, device]
+        outputs=[platform, device, context]
     )
 
-    # Platform -> Context, device
+    # Platform -> Device, context + Submit
     platform.change(
         on_platform_change,
         inputs=[
-            asset_type_state, 
-            industry_category, 
+            asset_type_state,
+            industry_category,
             industry_subcategory,
-            usecase_category, 
-            usecase_subcategory, 
+            usecase_category,
+            usecase_subcategory,
             platform
         ],
-        outputs=[context]  # Only context!
+        outputs=[device, context, submit_button]
     )
 
-    # Context -> Device + Submit
+    # Device -> Context + Submit
+    device.change(
+        on_device_change,
+        inputs=[
+            asset_type_state,
+            industry_category,
+            industry_subcategory,
+            usecase_category,
+            usecase_subcategory,
+            platform,
+            device
+        ],
+        outputs=[context, submit_button]
+    )
+
+    # Context -> Submit
     context.change(
         on_context_change,
-        inputs=[
-            asset_type_state, 
-            industry_category, 
-            industry_subcategory,
-            usecase_category, 
-            usecase_subcategory, 
-            platform,
-            context
-        ],
-        outputs=[device, submit_button]  # Device + Submit
+        inputs=[context],
+        outputs=[submit_button]
     )
 
     # ==================== SUBMIT HANDLER ====================
     submit_button.click(
+        start_submit,
+        outputs=[output_section, results_info, results_gallery, download_output,
+                 metrics_panel, submit_button]
+    ).then(
         on_submit,
         inputs=[
             industry_category, 
             industry_subcategory,
             usecase_category, 
             usecase_subcategory,
-            platform, 
-            context,
+            platform,
             device,
-            asset_type_state, 
+            context,
+            asset_type_state,
             purpose_state
         ],
-        outputs=[output_section, results_gallery, results_info, download_output]
+        outputs=[output_section, results_gallery, results_info, download_output,
+                 top_results_state, metrics_panel]
+    ).then(
+        finish_submit,
+        outputs=[submit_button]
+    )
+
+    # ==================== METRICS PANEL ====================
+    results_gallery.select(
+        on_gallery_select,
+        inputs=[top_results_state],
+        outputs=[metrics_panel]
     )
 
 #################################################################################################################
