@@ -5,6 +5,7 @@ from api import (
     load_all_combinations,
     cleanup_temp_dir,
 )
+from benchmark_bins import build_page
 from functionality import (
     on_industry_category_change,
     on_industry_subcategory_change,
@@ -316,6 +317,12 @@ with gr.Blocks(css=css) as demo:
         inputs=[top_results_state],
         outputs=[metrics_panel]
     )
+
+#################################################################################################################
+# Benchmark bins page, served at /benchmark_bins. Independent of everything above.
+
+with demo.route("Benchmark Bins", "/benchmark_bins"):
+    build_page()
 
 #################################################################################################################
 # Run the app

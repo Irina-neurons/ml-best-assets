@@ -205,6 +205,17 @@ hr {
     border-radius: 10px;
 }
 
+/* ==================== BENCHMARK BINS FILTERS ==================== */
+/* Keep the locked-in filters visible above the results while scrolling */
+.bins-filters {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: var(--body-background-fill);
+    border-bottom: 1px solid var(--border-color-primary);
+    padding: 8px 0;
+}
+
 /* ==================== METRICS PANEL ==================== */
 .metrics-panel {
     background-color: var(--block-background-fill);
